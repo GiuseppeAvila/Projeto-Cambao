@@ -21,31 +21,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="500dp"
-        android:layout_height="90dp"
-        android:background="@android:color/darker_gray"
-        android:gravity="center_vertical"
-        android:text="  Cambão"
-        android:textSize="50sp"
-        tools:layout_editor_absoluteX="-10dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/imageButtonProf2"
-        android:layout_width="89dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="332dp"
+        android:layout_width="98dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="620dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:srcCompat="@drawable/profile"
-        tools:layout_editor_absoluteY="3dp"
+        app:srcCompat="@drawable/perfil"
         tools:ignore="MissingConstraints" />
-
 
     <TextView
         android:id="@+id/textView7"
@@ -102,31 +90,15 @@
         tools:layout_editor_absoluteX="-9dp" />
 
     <ImageButton
-        android:id="@+id/imageButtonProf2"
-        android:layout_width="89dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="332dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:srcCompat="@drawable/profile"
-        tools:layout_editor_absoluteY="3dp"
-        android:scaleType="fitXY"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
         android:id="@+id/caixa"
         android:layout_width="145dp"
         android:layout_height="96dp"
-        android:layout_marginStart="152dp"
         android:adjustViewBounds="true"
         android:backgroundTint="#F6F2F2"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/caminhao"
         app:srcCompat="@drawable/fretes"
 
         tools:ignore="MissingConstraints" />
@@ -135,20 +107,21 @@
         android:id="@+id/caminhao"
         android:layout_width="128dp"
         android:layout_height="95dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="#F4F1F1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/caminhoes" />
+        app:srcCompat="@drawable/truck" />
 
     <ImageButton
-        android:id="@+id/contato"
-        android:layout_width="118dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#FDFAFA"
-        android:scaleType="fitXY"
+        android:id="@+id/phone"
+        android:layout_width="128dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="268dp"
+        android:backgroundTint="#F4F1F1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/contato2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/phone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

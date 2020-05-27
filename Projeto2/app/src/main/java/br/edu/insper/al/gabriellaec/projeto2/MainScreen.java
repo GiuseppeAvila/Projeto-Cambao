@@ -9,13 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class MainScreen extends AppCompatActivity {
     float x1, y1, x2, y2;
 
-    private ImageButton imageButtonMap;
-    private ImageView imageButtonNews;
+    private Button ButtonMap;
+    private Button ButtonNews;
+    private Button ButtonFrete;
     private ImageButton imageButtonProf;
     private ImageButton contato;
     private ImageButton caixa;
@@ -26,25 +26,25 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        imageButtonMap = (ImageButton) findViewById(R.id.imageButtonMap);
-        imageButtonNews = (ImageView) findViewById(R.id.imageButtonNews);
-        imageButtonProf = (ImageButton) findViewById(R.id.imageButtonProf2);
+        ButtonMap = (Button) findViewById(R.id.ButtonMapa);
+        ButtonFrete = (Button) findViewById(R.id.meu_frete);
+        ButtonNews = (Button) findViewById(R.id.ButtonNews);
         contato = (ImageButton) findViewById(R.id.contato);
-        caixa = (ImageButton) findViewById(R.id.caixa);
         caminhao = (ImageButton) findViewById(R.id.caminhao);
+        caixa = (ImageButton) findViewById(R.id.caixa);
 
 
-        imageButtonMap.setOnClickListener(new View.OnClickListener() {
+        ButtonMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMap();
             }
         });
 
-        imageButtonProf.setOnClickListener(new View.OnClickListener() {
+        ButtonFrete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainScreen.this, Info.class));
+                openActivityFretes();
             }
         });
 
@@ -55,6 +55,7 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
+
         contato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +64,8 @@ public class MainScreen extends AppCompatActivity {
         });
 
 
-        imageButtonNews.setOnClickListener(new View.OnClickListener() {
+
+        ButtonNews.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
@@ -106,6 +108,11 @@ public class MainScreen extends AppCompatActivity {
 
     public void openActivityDeliveries() {
         Intent intent = new Intent(this, Deliveries.class);
+        startActivity(intent);
+    }
+
+    public void openActivityFretes() {
+        Intent intent = new Intent(this, Fretes.class);
         startActivity(intent);
     }
 
