@@ -14,39 +14,28 @@ import android.widget.ImageView;
 public class MainScreen extends AppCompatActivity {
     float x1, y1, x2, y2;
 
-    private ImageButton imageButtonMap;
-    private ImageView imageButtonNews;
+    private Button mapa;
+    private Button meu_frete;
+    private Button portal;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        imageButtonMap = (ImageButton) findViewById(R.id.imageButtonMap);
-        imageButtonNews = (ImageView) findViewById(R.id.imageButtonNews);
 
-        imageButtonMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
+        mapa.setOnClickListener((view) -> {
+            Intent i = new Intent(MainScreen.this, MainMapa1.class);
+            startActivity(i);
+
         });
 
-        imageButtonNews.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://www.blogdocaminhoneiro.com"));
-                startActivity(intent);
-            }
-        });
-    }
+        meu_frete.setOnClickListener((view) -> {
+            Intent i = new Intent(MainScreen.this, MainMapa1.class);
+            startActivity(i);
 
-    public void openMap() {
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?"));
-        startActivity(intent);
+        });
+
 
     }
 
