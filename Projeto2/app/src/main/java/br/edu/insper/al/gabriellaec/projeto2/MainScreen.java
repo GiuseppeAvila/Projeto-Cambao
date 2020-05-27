@@ -16,6 +16,7 @@ public class MainScreen extends AppCompatActivity {
 
     private ImageButton imageButtonMap;
     private ImageView imageButtonNews;
+    private ImageButton imageButtonProf;
 
 
     @Override
@@ -24,6 +25,7 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         imageButtonMap = (ImageButton) findViewById(R.id.imageButtonMap);
         imageButtonNews = (ImageView) findViewById(R.id.imageButtonNews);
+        imageButtonProf = (ImageButton) findViewById(R.id.imageButtonProf);
 
         imageButtonMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +33,14 @@ public class MainScreen extends AppCompatActivity {
                 openMap();
             }
         });
+
+        imageButtonProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainScreen.this, Info.class));
+            }
+        });
+
 
         imageButtonNews.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

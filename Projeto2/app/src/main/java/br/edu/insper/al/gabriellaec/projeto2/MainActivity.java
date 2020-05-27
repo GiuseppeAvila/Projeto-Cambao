@@ -23,13 +23,25 @@ public class MainActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity2();
+                openActivityMainScreen();
+            }
+        });
+
+        cadastrobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityCadastro();
             }
         });
     }
 
-    public void openActivity2() {
+    public void openActivityMainScreen() {
         Intent intent = new Intent(this, MainScreen.class);
+        startActivity(intent);
+    }
+
+    public void openActivityCadastro() {
+        Intent intent = new Intent(this, NovoCadastro.class);
         startActivity(intent);
     }
 }
