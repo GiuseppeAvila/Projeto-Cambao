@@ -32,12 +32,20 @@ public class MainScreen extends AppCompatActivity {
         contato = (ImageButton) findViewById(R.id.contato);
         caminhao = (ImageButton) findViewById(R.id.caminhao);
         caixa = (ImageButton) findViewById(R.id.caixa);
+        imageButtonProf = (ImageButton) findViewById(R.id.imageView2);
 
 
         ButtonMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMap();
+            }
+        });
+
+        imageButtonProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainScreen.this, Info.class));
             }
         });
 
