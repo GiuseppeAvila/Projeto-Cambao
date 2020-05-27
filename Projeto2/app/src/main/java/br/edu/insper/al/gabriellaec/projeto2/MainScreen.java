@@ -17,6 +17,9 @@ public class MainScreen extends AppCompatActivity {
     private ImageButton imageButtonMap;
     private ImageView imageButtonNews;
     private ImageButton imageButtonProf;
+    private ImageButton contato;
+    private ImageButton caixa;
+    private ImageButton caminhao;
 
 
     @Override
@@ -25,7 +28,11 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         imageButtonMap = (ImageButton) findViewById(R.id.imageButtonMap);
         imageButtonNews = (ImageView) findViewById(R.id.imageButtonNews);
-        imageButtonProf = (ImageButton) findViewById(R.id.imageButtonProf);
+        imageButtonProf = (ImageButton) findViewById(R.id.imageButtonProf2);
+        contato = (ImageButton) findViewById(R.id.contato);
+        caixa = (ImageButton) findViewById(R.id.caixa);
+        caminhao = (ImageButton) findViewById(R.id.caminhao);
+
 
         imageButtonMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +45,20 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainScreen.this, Info.class));
+            }
+        });
+
+        caminhao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityDeliveries();
+            }
+        });
+
+        contato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityContacts();
             }
         });
 
@@ -74,9 +95,22 @@ public class MainScreen extends AppCompatActivity {
                 if(x1 < x2){
                     Intent i = new Intent(MainScreen.this, Deliveries.class);
                     startActivity(i);
+                }else if(x1 > x2){
+                    Intent i = new Intent(MainScreen.this, Contato.class);
+                    startActivity(i);
                 }
                 break;
         }
         return false;
+    }
+
+    public void openActivityDeliveries() {
+        Intent intent = new Intent(this, Deliveries.class);
+        startActivity(intent);
+    }
+
+    public void openActivityContacts() {
+        Intent intent = new Intent(this, Contato.class);
+        startActivity(intent);
     }
 }

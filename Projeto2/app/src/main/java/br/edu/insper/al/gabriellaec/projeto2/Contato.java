@@ -8,8 +8,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class Deliveries extends AppCompatActivity {
+public class Contato extends AppCompatActivity {
     float x1, y1, x2, y2;
+
     private ImageButton contato;
     private ImageButton caixa;
     private ImageButton caminhao;
@@ -17,19 +18,11 @@ public class Deliveries extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deliveries);
+        setContentView(R.layout.activity_contato);
 
         contato = (ImageButton) findViewById(R.id.contato);
         caixa = (ImageButton) findViewById(R.id.caixa);
         caminhao = (ImageButton) findViewById(R.id.caminhao);
-
-
-        contato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityContacts();
-            }
-        });
 
         caixa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,8 +30,15 @@ public class Deliveries extends AppCompatActivity {
                 openActivityMainScreen();
             }
         });
-    }
 
+        caminhao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityDeliveries();
+            }
+        });
+
+    }
 
     //MÉTODO PARA SLIDE DE TELA
     public boolean onTouchEvent(MotionEvent touchEvent){
@@ -50,23 +50,23 @@ public class Deliveries extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
-                if(x1 > x2){
-                    Intent i = new Intent(Deliveries.this, MainScreen.class);
+                if(x1 < x2){
+                    Intent i = new Intent(Contato.this, MainScreen.class);
                     startActivity(i);
-                }else if(x1 < x2){
-                    Intent i = new Intent(Deliveries.this, Contato.class);
+                } else if(x1 > x2){
+                    Intent i = new Intent(Contato.this, Deliveries.class);
                     startActivity(i);
                 }
-
                 break;
         }
         return false;
     }
 
-    public void openActivityContacts() {
-        Intent intent = new Intent(this, Contato.class);
+    public void openActivityDeliveries() {
+        Intent intent = new Intent(this, Deliveries.class);
         startActivity(intent);
     }
+
 
     public void openActivityMainScreen() {
         Intent intent = new Intent(this, MainScreen.class);
