@@ -20,7 +20,7 @@ public class Contato extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato);
 
-        contato = (ImageButton) findViewById(R.id.contato);
+        contato = (ImageButton) findViewById(R.id.caminhao);
         caixa = (ImageButton) findViewById(R.id.caixa);
         caminhao = (ImageButton) findViewById(R.id.caminhao);
 
