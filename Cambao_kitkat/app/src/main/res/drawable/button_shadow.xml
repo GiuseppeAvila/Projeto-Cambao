@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -28,4 +29,36 @@
         </layer-list>
     </item>
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <layer-list>
+            <!-- SHADOW -->
+            <item>
+                <shape>
+                    <solid android:color="#696969"/>
+                    <!-- alttan gölge -->
+
+                </shape>
+            </item>
+            <!-- BUTTON alttan gölge
+              android:right="5px" to make it round-->
+            <item
+                android:bottom="5px"
+                android:right="2px"
+                >
+                <shape>
+                    <gradient
+                        android:startColor="#FFFFFF"
+                        android:endColor="#D3D3D3"
+                        android:angle="270" />
+
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+>>>>>>> 3f40cbac6a2ed3f3fcd90150bcbd97a9290be81d
 </selector>

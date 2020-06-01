@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
+import br.edu.insper.al.carolineclc.myapplication.R;
+
 public class Contato extends AppCompatActivity {
     float x1, y1, x2, y2;
 
