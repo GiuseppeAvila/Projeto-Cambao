@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Contato"></activity>
-        <activity android:name=".Info" />
+<<<<<<< HEAD
+        <activity android:name=".MainScreen"></activity>
+=======
+        <activity android:name=".Info"></activity>
+>>>>>>> c6121c1db50b955a38f33cd33ed7d138a0d60acc
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
