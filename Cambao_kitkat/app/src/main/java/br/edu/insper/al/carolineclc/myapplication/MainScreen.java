@@ -21,7 +21,7 @@ public class MainScreen extends AppCompatActivity {
     private ImageButton caixa;
     private ImageButton caminhao;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
