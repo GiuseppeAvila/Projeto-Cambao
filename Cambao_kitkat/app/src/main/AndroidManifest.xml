@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".MainScreen"></activity>
-=======
-        <activity android:name=".Info"></activity>
->>>>>>> c6121c1db50b955a38f33cd33ed7d138a0d60acc
+        <activity android:name=".Fretes"></activity>
+        <activity android:name=".NovoCadastro" />
+        <activity android:name=".Contato" />
+        <activity android:name=".Deliveries" />
+        <activity android:name=".MainScreen" />
+        <activity android:name=".Info" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
