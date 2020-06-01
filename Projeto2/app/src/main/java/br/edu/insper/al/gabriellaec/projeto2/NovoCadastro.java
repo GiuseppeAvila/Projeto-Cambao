@@ -67,7 +67,9 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                 String tel = password.getText().toString();
                 String plate = emailId.getText().toString();
 
-                if(email.isEmpty()){
+                 if(email.isEmpty() && pwd.isEmpty() && name.isEmpty() && tel.isEmpty() && plate.isEmpty()){
+                    Toast.makeText(NovoCadastro.this,"Crie o cadastro para começar",Toast.LENGTH_SHORT).show();
+                }else if(email.isEmpty()){
                     emailId.setError("Por favor, informe seu email");
                     emailId.requestFocus();
                 } else  if(pwd.isEmpty()){
@@ -83,9 +85,7 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                     password.setError("Por favor, informe sua placa");
                     password.requestFocus();
                 }
-                else  if(email.isEmpty() && pwd.isEmpty() && name.isEmpty() && tel.isEmpty() && plate.isEmpty()){
-                    Toast.makeText(NovoCadastro.this,"Crie o cadastro para começar",Toast.LENGTH_SHORT).show();
-                }
+
 
                 else  if(!(email.isEmpty() && pwd.isEmpty() && name.isEmpty() && tel.isEmpty() && plate.isEmpty())){
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(NovoCadastro.this, new OnCompleteListener<AuthResult>() {

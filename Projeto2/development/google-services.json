@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "651379208081",
+    "firebase_url": "https://cambao-2da4d.firebaseio.com",
+    "project_id": "cambao-2da4d",
+    "storage_bucket": "cambao-2da4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651379208081:android:081ae8cd7440a748233430",
+        "android_client_info": {
+          "package_name": "br.edu.insper.al.gabriellaec.projeto2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651379208081-r2aek2s7lgfa4s6117juah04d0dpd21d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.insper.al.gabriellaec.projeto2",
+            "certificate_hash": "3423e0178d66b839b697be0848aba3fc4fa01f57"
+          }
+        },
+        {
+          "client_id": "651379208081-cdjggn90vcjv3tml5khaqvqsg40i1ctk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWYjHkrUjT0SwnXCV9FWYV4ANYvYUWfK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651379208081-cdjggn90vcjv3tml5khaqvqsg40i1ctk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
