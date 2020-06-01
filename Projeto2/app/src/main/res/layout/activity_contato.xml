@@ -89,39 +89,40 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-9dp" />
 
+
+
     <ImageButton
         android:id="@+id/caixa"
-        android:layout_width="145dp"
-        android:layout_height="96dp"
-        android:adjustViewBounds="true"
-        android:backgroundTint="#F6F2F2"
-        android:scaleType="fitXY"
+        android:layout_width="84dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:srcCompat="@drawable/fretes"
-
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/box" />
 
     <ImageButton
         android:id="@+id/caminhao"
-        android:layout_width="128dp"
-        android:layout_height="95dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#F4F1F1"
+        android:layout_width="84dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/truck" />
 
     <ImageButton
-        android:id="@+id/phone"
-        android:layout_width="128dp"
-        android:layout_height="95dp"
-        android:layout_marginStart="268dp"
-        android:backgroundTint="#F4F1F1"
+        android:id="@+id/contato"
+        android:layout_width="84dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/phone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

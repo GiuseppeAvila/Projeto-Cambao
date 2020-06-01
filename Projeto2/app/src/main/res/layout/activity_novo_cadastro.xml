@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -44,12 +44,12 @@
 
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:ems="10"
-            android:hint="Login"
+            android:hint="e-mail"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -86,12 +86,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/placa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:ems="10"
-            android:hint="Placa do veículo"
+            android:hint="Placa do veículo principal"
             android:inputType="textCapCharacters"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
