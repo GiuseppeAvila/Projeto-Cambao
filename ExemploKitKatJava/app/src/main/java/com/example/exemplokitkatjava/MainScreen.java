@@ -1,4 +1,4 @@
-package br.edu.insper.al.carolineclc.myapplication;
+package com.example.exemplokitkatjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,9 +17,9 @@ public class MainScreen extends AppCompatActivity {
     private Button ButtonNews;
     private Button ButtonFrete;
     private ImageButton imageButtonProf;
-    private ImageButton contato;
-    private ImageButton caixa;
-    private ImageButton caminhao;
+    private ImageButton ButtonContato;
+    private ImageButton ButtonCaixa;
+    private ImageButton ButtonCaminhao;
 
 
     @Override
@@ -30,9 +30,9 @@ public class MainScreen extends AppCompatActivity {
         ButtonMap = (Button) findViewById(R.id.ButtonMapa);
         ButtonFrete = (Button) findViewById(R.id.meu_frete);
         ButtonNews = (Button) findViewById(R.id.ButtonNews);
-        contato = (ImageButton) findViewById(R.id.contato);
-        caminhao = (ImageButton) findViewById(R.id.caminhao);
-        caixa = (ImageButton) findViewById(R.id.caixa);
+        ButtonContato = (ImageButton) findViewById(R.id.contato);
+        ButtonCaminhao = (ImageButton) findViewById(R.id.caminhao);
+        ButtonCaixa = (ImageButton) findViewById(R.id.caixa);
         imageButtonProf = (ImageButton) findViewById(R.id.imageView2);
 
 
@@ -43,37 +43,32 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-        imageButtonProf.setOnClickListener(new View.OnClickListener() {
+        ButtonCaminhao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainScreen.this, Info.class));
+                startActivity(new Intent(MainScreen.this, ActivityMeusFretes.class));
             }
         });
 
         ButtonFrete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityFretes();
+                startActivity(new Intent(MainScreen.this, ActivityMeusFretes.class));
             }
         });
 
-        caminhao.setOnClickListener(new View.OnClickListener() {
+        ButtonContato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityDeliveries();
+                startActivity(new Intent(MainScreen.this, ActivityContato.class));
             }
         });
-
-
-        contato.setOnClickListener(new View.OnClickListener() {
+        ButtonCaixa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityContacts();
+                startActivity(new Intent(MainScreen.this, ActivityNovosFretes.class));
             }
         });
-
-
-
         ButtonNews.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -83,6 +78,9 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 
     public void openMap() {
@@ -93,40 +91,8 @@ public class MainScreen extends AppCompatActivity {
     }
 
 
-    //MÉTODO PARA SLIDE DE TELA
-    public boolean onTouchEvent(MotionEvent touchEvent){
-        switch(touchEvent.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                x1 = touchEvent.getX();
-                y1 = touchEvent.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = touchEvent.getX();
-                y2 = touchEvent.getY();
-                if(x1 < x2){
-                    Intent i = new Intent(MainScreen.this, Deliveries.class);
-                    startActivity(i);
-                }else if(x1 > x2){
-                    Intent i = new Intent(MainScreen.this, Contato.class);
-                    startActivity(i);
-                }
-                break;
-        }
-        return false;
-    }
 
-    public void openActivityDeliveries() {
-        Intent intent = new Intent(this, Deliveries.class);
-        startActivity(intent);
-    }
 
-    public void openActivityFretes() {
-        Intent intent = new Intent(this, Fretes.class);
-        startActivity(intent);
-    }
-
-    public void openActivityContacts() {
-        Intent intent = new Intent(this, Contato.class);
-        startActivity(intent);
-    }
 }
+
+
