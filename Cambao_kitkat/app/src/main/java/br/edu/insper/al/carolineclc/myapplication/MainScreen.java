@@ -60,7 +60,13 @@ public class MainScreen extends AppCompatActivity {
         caminhao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityDeliveries();
+                openActivityFretes();
+            }
+        });
+        caixa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityCaixa();
             }
         });
 
@@ -127,6 +133,11 @@ public class MainScreen extends AppCompatActivity {
 
     public void openActivityContacts() {
         Intent intent = new Intent(this, Contato.class);
+        startActivity(intent);
+    }
+
+    public void openActivityCaixa() {
+        Intent intent = new Intent(this, Caixa.class);
         startActivity(intent);
     }
 }

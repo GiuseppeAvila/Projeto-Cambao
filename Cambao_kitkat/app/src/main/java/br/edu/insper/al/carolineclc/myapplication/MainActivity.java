@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"auth_failed",Toast.LENGTH_LONG).show();
                             }
                         }else {
-                            Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                            Intent intent = new Intent(MainActivity.this,MainScreen.class);
                             startActivity(intent);
                             finish();
                         }

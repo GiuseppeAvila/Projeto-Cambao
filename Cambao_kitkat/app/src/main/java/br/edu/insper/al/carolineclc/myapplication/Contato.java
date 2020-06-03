@@ -13,7 +13,7 @@ import br.edu.insper.al.carolineclc.myapplication.R;
 public class Contato extends AppCompatActivity {
     float x1, y1, x2, y2;
 
-    private ImageButton contato;
+
     private ImageButton caixa;
     private ImageButton caminhao;
 
@@ -22,9 +22,9 @@ public class Contato extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato);
 
-        contato = (ImageButton) findViewById(R.id.caminhao);
-        caixa = (ImageButton) findViewById(R.id.caixa);
-        caminhao = (ImageButton) findViewById(R.id.caminhao);
+
+        caixa = (ImageButton) findViewById(R.id.caixa_contato);
+        caminhao = (ImageButton) findViewById(R.id.caminhao_contato);
 
         caixa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +36,7 @@ public class Contato extends AppCompatActivity {
         caminhao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivityDeliveries();
+                openActivityFretes();
             }
         });
 
@@ -72,6 +72,11 @@ public class Contato extends AppCompatActivity {
 
     public void openActivityMainScreen() {
         Intent intent = new Intent(this, MainScreen.class);
+        startActivity(intent);
+    }
+
+    public void openActivityFretes() {
+        Intent intent = new Intent(this, Fretes.class);
         startActivity(intent);
     }
 }

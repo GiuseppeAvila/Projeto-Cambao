@@ -93,6 +93,9 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
                                 Toast.makeText(NovoCadastro.this,"Houve um problema no cadastro. Por favor, tente novamente",Toast.LENGTH_SHORT).show();
+                                task.getException().printStackTrace();
+                                // add this ^^^^^^^^^^^^^^^^^^^^^^^
+                                Toast.makeText(NovoCadastro.this,"Regestration error",Toast.LENGTH_LONG).show();
                             }
                             else {
                                 startActivity(new Intent(NovoCadastro.this,MainActivity.class));

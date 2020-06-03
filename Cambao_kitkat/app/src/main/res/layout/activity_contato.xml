@@ -92,7 +92,7 @@
 
 
     <ImageButton
-        android:id="@+id/caixa"
+        android:id="@+id/caixa_contato"
         android:layout_width="84dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
@@ -103,7 +103,7 @@
         app:srcCompat="@drawable/box" />
 
     <ImageButton
-        android:id="@+id/caminhao"
+        android:id="@+id/caminhao_contato"
         android:layout_width="84dp"
         android:layout_height="70dp"
         android:layout_marginBottom="16dp"
