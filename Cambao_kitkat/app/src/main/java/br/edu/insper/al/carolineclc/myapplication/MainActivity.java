@@ -90,5 +90,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityCaixa();
+            }
+        });}
+        public void openActivityCaixa() {
+            Intent intent = new Intent(this, Caixa.class);
+            startActivity(intent);
+        }
     }
-}
+
