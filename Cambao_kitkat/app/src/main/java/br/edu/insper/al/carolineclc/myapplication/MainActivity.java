@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });}
         public void openActivityCaixa() {
-            Intent intent = new Intent(this, Caixa.class);
+            Intent intent = new Intent(this, Perfil.class);
             startActivity(intent);
         }
     }

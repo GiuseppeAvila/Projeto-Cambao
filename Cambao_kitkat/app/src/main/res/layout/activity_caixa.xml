@@ -71,29 +71,11 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/caixa" />
 
-            <ImageButton
-                android:id="@+id/imageButton12"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/empresa1"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/caixa" />
-
-            <ImageButton
-                android:id="@+id/imageButton11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/caixa" />
-
-            <ImageButton
-                android:id="@+id/imageButton9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/caixa" />
-
-            <ImageButton
-                android:id="@+id/imageButton10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/caixa" />
+                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 

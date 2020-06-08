@@ -43,27 +43,30 @@ public class AcceptDelivery extends AppCompatActivity {
 
         // Read from the database
         reff.addValueEventListener(new ValueEventListener() {
-            String fname, contact, product, location, price;
+            String fname, contact, product, location, price, saida, chegada, peso;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
                         fname = dataSnapshot.child("nome").getValue().toString();
                         contact = dataSnapshot.child("contato").getValue().toString();
                         product = dataSnapshot.child("produto").getValue().toString();
                         location = dataSnapshot.child("endereco").getValue().toString();
                         price = dataSnapshot.child("preco").getValue().toString();
+                        chegada = dataSnapshot.child("horariochegada").getValue().toString();
+                        saida = dataSnapshot.child("horariosaida").getValue().toString();
+                        peso = dataSnapshot.child("peso").getValue().toString();
 
-                nome.setText(fname);
-                contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
-                produto.setText(Html.fromHtml("<b>" +"Produto e quantidade: " + "</b> "+ product));
-                localizacao.setText(Html.fromHtml("<b>" +"Localização: " + "</b> "+ location));
-                preco.setText("R$" + price);
+                        nome.setText(fname);
+                        contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
+                        produto.setText(Html.fromHtml("<b>" +"Produto e quantidade: " + "</b> "+ product));
+                        localizacao.setText(Html.fromHtml("<b>" +"Localização: " + "</b> "+ location));
+                        preco.setText("R$" + price);
+
+                Entrega entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
+
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println("falhouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
-
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
@@ -75,6 +78,12 @@ public class AcceptDelivery extends AppCompatActivity {
             public void onClick(View v) {
                 openActivityCaixa();
             }
+        });
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
         });}
 
 
@@ -82,6 +91,9 @@ public class AcceptDelivery extends AppCompatActivity {
             Intent intent = new Intent(this, Caixa.class);
             startActivity(intent);
         }
+
+
+
     }
 
-
+//https://www.youtube.com/watch?v=GuMwCuvGWx4

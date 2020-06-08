@@ -6,6 +6,7 @@ import android.Manifest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
@@ -19,11 +20,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class NovoCadastro extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private Button concluir;
     FirebaseAuth mFirebaseAuth;
     private EditText emailId, password, placa, telefone, nome;
+    private User user;
+    private DatabaseReference mDatabase;
+    private static final String USERS = "users";
+    private String TAG = "RegisterActivity";
+    private FirebaseDatabase database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +41,16 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_novo_cadastro);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
+        mDatabase = database.getReference(USERS);
+
         emailId = findViewById(R.id.email);
         password = findViewById(R.id.senha);
         nome = findViewById(R.id.nome);
         placa = findViewById(R.id.placa);
         telefone = findViewById(R.id.telefone);
         concluir = (Button) findViewById(R.id.button);
-
-
-
-
-        Spinner spinnerCaminhao = (Spinner) findViewById(R.id.spinner);
-        String[] items = new String[] {"Tipo do veículo","Carreta","Carreta LS","Vanderléia","Bitrem","Rodotrem","Truck","Bitruck","VCL","3/4","Toco"};
-        ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCaminhao.setAdapter(adapter);
-        spinnerCaminhao.setOnItemSelectedListener(this);
 
 
         Spinner spinnerQuantidade = (Spinner) findViewById(R.id.spinner2);
@@ -63,9 +67,17 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
-                String name = emailId.getText().toString();
-                String tel = password.getText().toString();
-                String plate = emailId.getText().toString();
+                String name = nome.getText().toString();
+                String tel = telefone.getText().toString();
+                String plate = placa.getText().toString();
+                String num=numeros.toString();
+
+                int id = spinnerQuantidade.getSelectedItemPosition();
+                String n = (String) numeros[id];
+
+                user = new User(name, email, n, plate, tel);
+
+
 
                 if(email.isEmpty()){
                     emailId.setError("Por favor, informe seu email");
@@ -98,6 +110,9 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                                 Toast.makeText(NovoCadastro.this,"Regestration error",Toast.LENGTH_LONG).show();
                             }
                             else {
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                                updateUI(user);
                                 startActivity(new Intent(NovoCadastro.this,MainActivity.class));
                             }
                         }
@@ -128,5 +143,11 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    public void updateUI(FirebaseUser currentUser) {
+        String keyid = mDatabase.push().getKey();
+        mDatabase.child(keyid).setValue(user); //adding user info to database
+        Intent loginIntent = new Intent(this, MainActivity.class);
+        startActivity(loginIntent);
     }
 }
