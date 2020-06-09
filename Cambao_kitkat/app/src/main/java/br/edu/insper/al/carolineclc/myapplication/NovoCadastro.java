@@ -121,6 +121,9 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                                 benutzer.setId(user.getProviderId());
                                 System.out.println("oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"+ user);
                                 startActivity(new Intent(NovoCadastro.this,MainActivity.class));
+
+
+
                             }
                         }
                     });
