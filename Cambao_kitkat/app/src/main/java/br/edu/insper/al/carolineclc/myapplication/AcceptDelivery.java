@@ -25,13 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class AcceptDelivery extends AppCompatActivity {
-    private TextView nome, contato, localizacao, produto, preco;
+    private TextView nome, contato, localizacao, produto, preco, exit, arrival, weight;
     private Button accept, decline;
     DatabaseReference reff;
     private final String TAG = this.getClass().getName().toUpperCase();
     FirebaseAuth mFirebaseAuth;
     private Entrega entrega;
-    private EditText emailId, password, placa, telefone, nomeid, exit, arrival, weight;
+    private EditText emailId, password, placa, telefone, nomeid;
     private User user;
     private DatabaseReference mDatabase;
     private static final String USERS = "users";
@@ -39,7 +39,6 @@ public class AcceptDelivery extends AppCompatActivity {
     private FirebaseDatabase database;
 
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,27 +65,27 @@ public class AcceptDelivery extends AppCompatActivity {
             String fname, contact, product, location, price, saida, chegada, peso;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                        fname = dataSnapshot.child("nome").getValue().toString();
-                        contact = dataSnapshot.child("contato").getValue().toString();
-                        product = dataSnapshot.child("produto").getValue().toString();
-                        location = dataSnapshot.child("endereco").getValue().toString();
-                        price = dataSnapshot.child("preco").getValue().toString();
-                        chegada = dataSnapshot.child("horariochegada").getValue().toString();
-                        saida = dataSnapshot.child("horariosaida").getValue().toString();
-                        peso = dataSnapshot.child("peso").getValue().toString();
+                fname = dataSnapshot.child("nome").getValue().toString();
+                contact = dataSnapshot.child("contato").getValue().toString();
+                product = dataSnapshot.child("produto").getValue().toString();
+                location = dataSnapshot.child("endereco").getValue().toString();
+                price = dataSnapshot.child("preco").getValue().toString();
+                chegada = dataSnapshot.child("horariochegada").getValue().toString();
+                saida = dataSnapshot.child("horariosaida").getValue().toString();
+                peso = dataSnapshot.child("peso").getValue().toString();
 
-                        nome.setText(fname);
-                        contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
-                        produto.setText(Html.fromHtml("<b>" +"Produto e quantidade: " + "</b> "+ product));
-                        localizacao.setText(Html.fromHtml("<b>" +"Localização: " + "</b> "+ location));
-                        exit.setText(Html.fromHtml("<b>" +"Chegada: " + "</b> "+ location));
-                        arrival.setText(Html.fromHtml("<b>" +"Saída: " + "</b> "+ location));
-                        weight.setText(Html.fromHtml("<b>" +"Peso: " + "</b> "+ location));
+                nome.setText(fname);
+                contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
+                produto.setText(Html.fromHtml("<b>" + "Produto e quantidade: " + "</b> " + product));
+                localizacao.setText(Html.fromHtml("<b>" + "Localização: " + "</b> " + location));
+                exit.setText(Html.fromHtml("<b>" + "Chegada: " + "</b> " + saida));
+                arrival.setText(Html.fromHtml("<b>" + "Saída: " + "</b> " + chegada));
+                weight.setText(Html.fromHtml("<b>" + "Peso: " + "</b> " + peso));
 
                 preco.setText("R$" + price);
 
 
-                        entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
+                entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
 
             }
 
@@ -108,11 +107,13 @@ public class AcceptDelivery extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String keyid = mDatabase.push().getKey();
-                mDatabase.child(keyid).child(this.User).setValue("frete1",entrega);
-                // [END update_password]
-            }}}}
-
+                //String keyid = mDatabase.push().getKey();
+                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                String UserId = (user.getProviderId());
+                reff = FirebaseDatabase.getInstance().getReference().child(UserId).child("frete1");
+                reff.setValue(entrega);
+            }});
+        }
 
         public void openActivityCaixa() {
             Intent intent = new Intent(this, Caixa.class);

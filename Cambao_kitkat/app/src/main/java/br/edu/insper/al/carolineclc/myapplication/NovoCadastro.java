@@ -75,7 +75,12 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                 int id = spinnerQuantidade.getSelectedItemPosition();
                 String n = (String) numeros[id];
 
-                benutzer = new User(name, email, n, plate, tel);
+                Entrega frete1 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega frete2 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega frete3 = new Entrega("", "", "", "", "", "", "", "");
+
+
+                benutzer = new User(name, email, n, plate, tel, frete1, frete2, frete3);
 
 
 

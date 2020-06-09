@@ -63,6 +63,10 @@ public class Perfil extends AppCompatActivity {
                 String email = user.getEmail();
                 String placa = user.getUid();
 
+                String UserId = (user.getProviderId());
+                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(UserId).child("frete1");
+                String f = reff.getKey();
+
                 Uri photoUrl = user.getPhotoUrl();
 
                 // Check if user's email is verified
@@ -71,7 +75,7 @@ public class Perfil extends AppCompatActivity {
                 String uid = user.getUid();
 
                 nome.setText(name);
-                tel.setText(email);
+                tel.setText(f);
                 System.out.println(placa);
             }
             // [END get_user_profile]

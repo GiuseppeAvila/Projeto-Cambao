@@ -22,6 +22,7 @@ public class MainScreen extends AppCompatActivity {
     private ImageButton caminhao;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class MainScreen extends AppCompatActivity {
         contato = (ImageButton) findViewById(R.id.contato);
         caminhao = (ImageButton) findViewById(R.id.caminhao);
         caixa = (ImageButton) findViewById(R.id.caixa);
-        imageButtonProf = (ImageButton) findViewById(R.id.imageView2);
+        imageButtonProf = (ImageButton) findViewById(R.id.perfil);
 
 
         ButtonMap.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +90,12 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        imageButtonProf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openActivityPerfil();
+            }
+        });
     }
 
     public void openMap() {
@@ -138,6 +145,11 @@ public class MainScreen extends AppCompatActivity {
 
     public void openActivityCaixa() {
         Intent intent = new Intent(this, Caixa.class);
+        startActivity(intent);
+    }
+
+    public void openActivityPerfil() {
+        Intent intent = new Intent(this, Perfil.class);
         startActivity(intent);
     }
 }

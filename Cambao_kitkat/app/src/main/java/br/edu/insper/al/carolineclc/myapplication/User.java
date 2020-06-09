@@ -14,16 +14,16 @@ public class User {
     private String id;
 
     public User(String fullName, String email, String caminhoes,
-                String placa, String phone) {
+                String placa, String phone, Entrega frete1, Entrega frete2, Entrega frete3) {
         this.id =null;
         this.email = email;
         this.fullName = fullName;
         this.placa = placa;
         this.phone = phone;
         this.caminhoes = caminhoes;
-        this.frete1=null;
-        this.frete2=null;
-        this.frete3=null;
+        this.frete1=frete1;
+        this.frete2=frete2;
+        this.frete3=frete3;
 
     }
 
