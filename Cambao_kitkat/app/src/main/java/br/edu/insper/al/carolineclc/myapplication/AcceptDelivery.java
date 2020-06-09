@@ -109,7 +109,9 @@ public class AcceptDelivery extends AppCompatActivity {
             public void onClick(View v) {
                 //String keyid = mDatabase.push().getKey();
                 FirebaseUser user = mFirebaseAuth.getInstance().getCurrentUser();
-                String userId = (user.getProviderId());
+                //String userId = (user.getProviderId());
+                String userId = user.getUid();
+
                 mDatabase = FirebaseDatabase.getInstance().getReference();
 
                 //databaseReference.child("users").child(userId).setValue(user);
