@@ -1,16 +1,23 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.Snapshot;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,8 +29,17 @@ public class AcceptDelivery extends AppCompatActivity {
     private Button accept, decline;
     DatabaseReference reff;
     private final String TAG = this.getClass().getName().toUpperCase();
+    FirebaseAuth mFirebaseAuth;
+    private Entrega entrega;
+    private EditText emailId, password, placa, telefone, nomeid, exit, arrival, weight;
+    private User user;
+    private DatabaseReference mDatabase;
+    private static final String USERS = "users";
+    //private String TAG = "RegisterActivity";
+    private FirebaseDatabase database;
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +50,10 @@ public class AcceptDelivery extends AppCompatActivity {
         localizacao=findViewById(R.id.localizacaoEmpresa);
         produto=findViewById(R.id.produtoEmpresa);
         preco=findViewById(R.id.precoEmpresa);
+        exit=findViewById(R.id.saida);
+        arrival=findViewById(R.id.chegada);
+        weight=findViewById(R.id.peso);
+
 
         accept=findViewById(R.id.buttonAccept);
         decline=findViewById(R.id.buttonDecline);
@@ -59,9 +79,14 @@ public class AcceptDelivery extends AppCompatActivity {
                         contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
                         produto.setText(Html.fromHtml("<b>" +"Produto e quantidade: " + "</b> "+ product));
                         localizacao.setText(Html.fromHtml("<b>" +"Localização: " + "</b> "+ location));
-                        preco.setText("R$" + price);
+                        exit.setText(Html.fromHtml("<b>" +"Chegada: " + "</b> "+ location));
+                        arrival.setText(Html.fromHtml("<b>" +"Saída: " + "</b> "+ location));
+                        weight.setText(Html.fromHtml("<b>" +"Peso: " + "</b> "+ location));
 
-                Entrega entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
+                preco.setText("R$" + price);
+
+
+                        entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
 
             }
 
@@ -83,8 +108,10 @@ public class AcceptDelivery extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            }
-        });}
+                String keyid = mDatabase.push().getKey();
+                mDatabase.child(keyid).child(this.User).setValue("frete1",entrega);
+                // [END update_password]
+            }}}}
 
 
         public void openActivityCaixa() {

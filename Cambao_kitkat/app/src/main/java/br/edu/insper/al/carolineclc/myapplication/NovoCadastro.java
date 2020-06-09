@@ -28,7 +28,7 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
     private Button concluir;
     FirebaseAuth mFirebaseAuth;
     private EditText emailId, password, placa, telefone, nome;
-    private User user;
+    private User benutzer;
     private DatabaseReference mDatabase;
     private static final String USERS = "users";
     private String TAG = "RegisterActivity";
@@ -70,12 +70,12 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                 String name = nome.getText().toString();
                 String tel = telefone.getText().toString();
                 String plate = placa.getText().toString();
-                String num=numeros.toString();
+               // String num=numeros.toString();
 
                 int id = spinnerQuantidade.getSelectedItemPosition();
                 String n = (String) numeros[id];
 
-                user = new User(name, email, n, plate, tel);
+                benutzer = new User(name, email, n, plate, tel);
 
 
 
@@ -113,6 +113,8 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                                 updateUI(user);
+                                benutzer.setId(user.getProviderId());
+                                System.out.println("oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"+ user);
                                 startActivity(new Intent(NovoCadastro.this,MainActivity.class));
                             }
                         }
@@ -146,7 +148,7 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
     }
     public void updateUI(FirebaseUser currentUser) {
         String keyid = mDatabase.push().getKey();
-        mDatabase.child(keyid).setValue(user); //adding user info to database
+        mDatabase.child(keyid).setValue(benutzer); //adding user info to database
         Intent loginIntent = new Intent(this, MainActivity.class);
         startActivity(loginIntent);
     }

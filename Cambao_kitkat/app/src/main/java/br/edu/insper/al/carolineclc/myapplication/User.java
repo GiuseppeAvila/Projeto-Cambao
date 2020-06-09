@@ -11,10 +11,11 @@ public class User {
     private Entrega frete1;
     private Entrega frete2;
     private Entrega frete3;
-
+    private String id;
 
     public User(String fullName, String email, String caminhoes,
                 String placa, String phone) {
+        this.id =null;
         this.email = email;
         this.fullName = fullName;
         this.placa = placa;
@@ -101,5 +102,11 @@ public class User {
         this.frete3 = frete3;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }
