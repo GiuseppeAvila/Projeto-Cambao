@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 
 public class Perfil extends AppCompatActivity {
-    private TextView nome, tel, novo;
+    private TextView nome, tel, mail, truck;
     private final String TAG = this.getClass().getName().toUpperCase();
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
@@ -46,40 +46,56 @@ public class Perfil extends AppCompatActivity {
         DatabaseReference userRef = rootRef.child(USERS);
         Log.v("USERID", userRef.getKey());
 
-        nome = findViewById(R.id.nomeUser);
-        tel = findViewById(R.id.telUser);
-        novo = findViewById(R.id.newInfo);
+        nome = findViewById(R.id.userName);
+        tel = findViewById(R.id.userPhone);
+        mail = findViewById(R.id.userEmail);
+        truck = findViewById(R.id.userTruck);
 
         getUserProfile();
        // getProviderData();
 
     }
         public void getUserProfile() {
-            // [START get_user_profile]
+
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
+                String userId = user.getUid();
+
                 // Name, email address, and profile photo Url
                 String name = user.getDisplayName();
                 String email = user.getEmail();
-                String placa = user.getUid();
 
                 String UserId = (user.getProviderId());
-                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(UserId).child("frete1");
-                String f = reff.getKey();
+                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("users").child(UserId);
+                DatabaseReference f = reff.child("caminhoes");
+                String x= reff.getKey();
 
-                Uri photoUrl = user.getPhotoUrl();
 
-                // Check if user's email is verified
-               // boolean emailVerified = user.isEmailVerified();
 
-                String uid = user.getUid();
+                reff.addValueEventListener(new ValueEventListener() {
+                    String fname, contact, product, location, price, saida, chegada, peso;
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //fname = dataSnapshot.child("fullName").getValue().toString();
+                        //contact = dataSnapshot.child("phone").getValue().toString();
+                       // product = dataSnapshot.child("email").getValue().toString();
+                        //location = dataSnapshot.child("caminhoes").getValue().toString();
 
-                nome.setText(name);
-                tel.setText(f);
-                System.out.println(placa);
-            }
-            // [END get_user_profile]
-        }
+                        nome.setText(name);
+                        tel.setText(Html.fromHtml("<b>" + "Telefone: " + "</b> " +  x));
+                        mail.setText(Html.fromHtml("<b>" + "Email: " + "</b> " + email));
+                        truck.setText(Html.fromHtml("<b>" + "Quantidade atual de caminhões: " + "</b> " + f));
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                }}
 
     public void getProviderData() {
         // [START get_provider_data]

@@ -48,43 +48,53 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.625">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <GridLayout
+            android:layout_width="411dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/imageButton15"
-                android:layout_width="match_parent"
+                android:layout_width="295dp"
                 android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
                 app:srcCompat="@drawable/caixa" />
 
             <ImageButton
                 android:id="@+id/imageButton14"
-                android:layout_width="match_parent"
+                android:layout_width="295dp"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/caixa" />
 
             <ImageButton
                 android:id="@+id/imageButton13"
-                android:layout_width="match_parent"
+                android:layout_width="297dp"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/caixa" />
 
             <TextView
                 android:id="@+id/empresa1"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:background="#589A9696"
+                android:fontFamily="sans-serif-condensed"
+                android:text="TextView"
+                android:textAlignment="viewEnd"
+                android:textColor="#494444"
+                android:textSize="32sp" />
+
+        </GridLayout>
     </ScrollView>
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="196dp"
-        android:layout_height="43dp"
+        android:layout_width="249dp"
+        android:layout_height="49dp"
         android:text="Recomendacoes"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"

@@ -1,6 +1,9 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
-public class Entrega {
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+
+public class Entrega implements DatabaseReference.CompletionListener {
     private String contato;
     private String nome;
     private String endereco;
@@ -83,5 +86,10 @@ public class Entrega {
 
     public void setProduto(String produto) {
         this.produto = produto;
+    }
+
+    @Override
+    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+
     }
 }
