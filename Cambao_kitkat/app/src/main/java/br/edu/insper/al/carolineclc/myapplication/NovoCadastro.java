@@ -118,11 +118,9 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                                 updateUI(user);
-                                benutzer.setId(user.getProviderId());
+                                benutzer.setId(user.getUid());
                                 System.out.println("oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"+ user);
                                 startActivity(new Intent(NovoCadastro.this,MainActivity.class));
-
-
 
                             }
                         }
