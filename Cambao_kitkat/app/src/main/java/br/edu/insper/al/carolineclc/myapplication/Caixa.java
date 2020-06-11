@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,13 +21,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Caixa extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ImageButton contato;
     private ImageButton caixa;
     private ImageButton caminhao;
     private ImageButton btn;
     private TextView empresa1;
     DatabaseReference reff;
+    EditText nameeditText,urleditText;
+    Button btnsave;
+    ListView listView;
+    //FirebaseClient firebaseClient;
+    EditText GetValue;
+
+
     private final String TAG = this.getClass().getName().toUpperCase();
 
 
@@ -34,22 +49,38 @@ public class Caixa extends AppCompatActivity {
         contato = (ImageButton) findViewById(R.id.contato_caixa);
         caminhao = (ImageButton) findViewById(R.id.caminhao_caixa);
         caixa = (ImageButton) findViewById(R.id.caixa_caixa);
+        //GetValue = findViewById(R.id.editText1);
 
-        empresa1=findViewById(R.id.empresa1);
+
+        //empresa1=findViewById(R.id.empresa1);
+        // btn=(ImageButton) findViewById(R.id.imageButton15);
+        ListView listview = (ListView) findViewById(R.id.listView1);
+        listview.setOnItemClickListener(this);
 
 
-        btn=(ImageButton) findViewById(R.id.imageButton15);
+        reff = FirebaseDatabase.getInstance().getReference().child("empresas");
+        String[] ListElements = new String[]{};
 
-        reff = FirebaseDatabase.getInstance().getReference().child("empresas").child("empresa1");
+        final List<String> ListElementsArrayList = new ArrayList<>(Arrays.asList(ListElements));
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (Caixa.this, android.R.layout.simple_list_item_1, ListElementsArrayList);
+        listview.setAdapter(adapter);
 
         // Read from the database
         reff.addValueEventListener(new ValueEventListener() {
             String fname, contact, product, location, price;
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                fname = dataSnapshot.child("nome").getValue().toString();
-                empresa1.setText(fname);
+                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
 
+                    fname = childDataSnapshot.child("nome").getValue().toString();
+                    //empresa1.setText(fname);
+                    ListElementsArrayList.add(fname);
+                    adapter.notifyDataSetChanged();
+
+                }
+                System.out.println(ListElementsArrayList);
             }
 
             @Override
@@ -58,14 +89,23 @@ public class Caixa extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-    btn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            openActivityAccept();
-        }
-    });}
+    }
     public void openActivityAccept() {
         Intent intent = new Intent(this, AcceptDelivery.class);
         startActivity(intent);
     }
+
+    public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+        Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
+        // Then you start a new Activity via Intent
+        Intent intent = new Intent();
+        intent.setClass(this, AcceptDelivery.class);
+        intent.putExtra("position", position);
+        // Or / And
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
 }
+
+
+//https://stackoverflow.com/questions/13281197/android-how-to-create-clickable-listview
