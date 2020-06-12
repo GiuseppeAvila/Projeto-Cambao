@@ -154,7 +154,7 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
     }
     public void updateUI(FirebaseUser currentUser) {
         String keyid = mDatabase.push().getKey();
-        mDatabase.child(keyid).setValue(benutzer); //adding user info to database
+        mDatabase.child(currentUser.getUid()).setValue(benutzer); //adding user info to database
         Intent loginIntent = new Intent(this, MainActivity.class);
         startActivity(loginIntent);
     }

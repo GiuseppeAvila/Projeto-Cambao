@@ -11,6 +11,7 @@ public class Fretes extends AppCompatActivity {
     private ImageButton contato;
     private ImageButton caixa;
     private ImageButton caminhao;
+    private ImageButton aceito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class Fretes extends AppCompatActivity {
         contato = (ImageButton) findViewById(R.id.contato_fretes);
         caminhao = (ImageButton) findViewById(R.id.caminhao_fretes);
         caixa = (ImageButton) findViewById(R.id.caixa_fretes);
+        aceito = (ImageButton) findViewById(R.id.caixa_fretes);
 
         caminhao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,13 @@ public class Fretes extends AppCompatActivity {
                 openActivityCaixas();
             }
         });
+        aceito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityAceito();
+            }
+        });
+
     }
 
     public void openActivityFretes() {
@@ -54,6 +63,10 @@ public class Fretes extends AppCompatActivity {
     }
     public void openActivityCaixas() {
         Intent intent = new Intent(this, Caixa.class);
+        startActivity(intent);
+    }
+    public void openActivityAceito() {
+        Intent intent = new Intent(this, Aceito.class);
         startActivity(intent);
     }
 }
