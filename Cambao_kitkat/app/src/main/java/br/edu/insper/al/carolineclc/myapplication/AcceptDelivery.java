@@ -37,6 +37,8 @@ public class AcceptDelivery extends AppCompatActivity {
     private static final String USERS = "users";
     //private String TAG = "RegisterActivity";
     private FirebaseDatabase database;
+    Caixa current;
+    String empresaId="";
 
 
     @Override
@@ -57,14 +59,22 @@ public class AcceptDelivery extends AppCompatActivity {
         accept=findViewById(R.id.buttonAccept);
         decline=findViewById(R.id.buttonDecline);
 
+        //Get Food_id from intent
+        //if(getIntent() != null)
+        Intent intent = getIntent();
+        empresaId = intent.getStringExtra("id");
+        System.out.println(empresaId);
 
-        reff = FirebaseDatabase.getInstance().getReference().child("empresas").child("empresa1");
+
+        reff = FirebaseDatabase.getInstance().getReference().child("empresas").child(empresaId);
 
         // Read from the database
         reff.addValueEventListener(new ValueEventListener() {
             String fname, contact, product, location, price, saida, chegada, peso;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+             //  current= dataSnapshot.getValue(empresaId);
+
                 fname = dataSnapshot.child("nome").getValue().toString();
                 contact = dataSnapshot.child("contato").getValue().toString();
                 product = dataSnapshot.child("produto").getValue().toString();
@@ -135,3 +145,4 @@ public class AcceptDelivery extends AppCompatActivity {
     }
 
 //https://www.youtube.com/watch?v=GuMwCuvGWx4
+//https://github.com/Galosoft10/FireMenu/blob/master/app/src/main/java/com/example/jose/firemenu/FoodDetail.java

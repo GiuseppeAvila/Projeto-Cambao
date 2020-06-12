@@ -97,12 +97,13 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
+        System.out.println(id);
         // Then you start a new Activity via Intent
         Intent intent = new Intent();
         intent.setClass(this, AcceptDelivery.class);
-        intent.putExtra("position", position);
+       // intent.putExtra("position", position);
         // Or / And
-        intent.putExtra("id", id);
+        intent.putExtra("id", (new Long(id)).toString());
         startActivity(intent);
     }
 }

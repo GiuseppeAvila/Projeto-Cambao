@@ -59,36 +59,6 @@
                 app:srcCompat="@drawable/buttons_verde" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                app:srcCompat="@drawable/buttons_verde" />
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="match_parent"
-                android:layout_height="61dp"
-                app:srcCompat="@drawable/buttons_verde" />
-
-            <ImageButton
-                android:id="@+id/imageButton4"
-                android:layout_width="match_parent"
-                android:layout_height="66dp"
-                app:srcCompat="@drawable/buttons" />
-
-            <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
-                app:srcCompat="@drawable/buttons" />
-
-            <ImageButton
-                android:id="@+id/imageButton6"
-                android:layout_width="match_parent"
-                android:layout_height="69dp"
-                app:srcCompat="@drawable/buttons" />
-
-            <ImageButton
                 android:id="@+id/imageButton7"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
