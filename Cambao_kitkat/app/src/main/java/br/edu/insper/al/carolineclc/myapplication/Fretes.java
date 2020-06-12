@@ -43,12 +43,6 @@ public class Fretes extends AppCompatActivity {
                 openActivityCaixas();
             }
         });
-        aceito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityAceito();
-            }
-        });
 
     }
 
@@ -63,10 +57,6 @@ public class Fretes extends AppCompatActivity {
     }
     public void openActivityCaixas() {
         Intent intent = new Intent(this, Caixa.class);
-        startActivity(intent);
-    }
-    public void openActivityAceito() {
-        Intent intent = new Intent(this, Aceito.class);
         startActivity(intent);
     }
 }
