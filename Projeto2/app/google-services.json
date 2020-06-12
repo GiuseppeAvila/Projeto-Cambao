@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "436363279670",
+    "firebase_url": "https://cambaoempresas.firebaseio.com",
+    "project_id": "cambaoempresas",
+    "storage_bucket": "cambaoempresas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436363279670:android:6a5de4fbebac08d47d0797",
+        "android_client_info": {
+          "package_name": "br.edu.insper.al.gabriellaec.projeto2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436363279670-krqfan6dsflf6fr2kvfaon12nspnmaus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDleFNyoxg2FEHPO8xbZqzTnUMuzUaOEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436363279670-krqfan6dsflf6fr2kvfaon12nspnmaus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

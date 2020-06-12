@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Projeto2</string>
+    <string-array name="caminhao">
+        <item>Carreta</item>
+        <item>Carreta LS</item>
+        <item>Vanderléia</item>
+        <item>Bitrem</item>
+        <item>Rodotrem</item>
+        <item>Truck</item>
+        <item>Bitruck</item>
+        <item>VCL</item>
+        <item>3/4</item>
+        <item>Toco</item>
+
+    </string-array>
+
+</resources>
