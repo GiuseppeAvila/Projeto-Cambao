@@ -1,10 +1,7 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.widgets.Snapshot;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -14,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -56,7 +51,7 @@ public class AcceptDelivery extends AppCompatActivity {
         weight=findViewById(R.id.peso);
 
 
-        accept=findViewById(R.id.buttonAccept);
+        accept=findViewById(R.id.buttonEntregue);
         decline=findViewById(R.id.buttonDecline);
 
         //Get Food_id from intent
@@ -131,6 +126,7 @@ public class AcceptDelivery extends AppCompatActivity {
                 //reff = FirebaseDatabase.getInstance().getReference().child("users").child(UserId).child("frete1");
                 //reff.setValue(entrega);
                 mDatabase.child("users").child(userId).child("frete1").setValue(entrega);
+                openMainScreen();
 
             }});
         }
@@ -139,6 +135,11 @@ public class AcceptDelivery extends AppCompatActivity {
             Intent intent = new Intent(this, Caixa.class);
             startActivity(intent);
         }
+
+    public void openMainScreen() {
+        Intent intent = new Intent(this, MainScreen.class);
+        startActivity(intent);
+    }
 
 
 

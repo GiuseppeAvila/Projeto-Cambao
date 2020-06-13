@@ -60,6 +60,8 @@ public class Fretes extends AppCompatActivity {
 
 
 
+
+
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = reff.child("users");
         Log.v("USERID", userRef.getKey());
@@ -84,6 +86,39 @@ public class Fretes extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+        });
+
+        frete1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Fretes.this, DetailsFrete.class);
+                // intent.tExtra("position", position);
+                // Or / And
+                intent.putExtra("frete", ("frete1"));
+                startActivity(intent);              }
+        });
+
+        frete2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Fretes.this, DetailsFrete.class);
+                // intent.tExtra("position", position);
+                // Or / And
+                intent.putExtra("frete", ("frete2"));
+                startActivity(intent);              }
+        });
+
+        frete3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Fretes.this, DetailsFrete.class);
+                // intent.tExtra("position", position);
+                // Or / And
+                intent.putExtra("frete", ("frete3"));
+                startActivity(intent);            }
         });
 
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DetailsFrete extends AppCompatActivity {
 
     private TextView nome, contato, localizacao, produto, preco, exit, arrival, weight;
-    private Button accept, decline;
+    private Button entregue;
     DatabaseReference reff;
     private final String TAG = this.getClass().getName().toUpperCase();
     FirebaseAuth mFirebaseAuth;
@@ -40,94 +41,81 @@ public class DetailsFrete extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accept_delivery);
+        setContentView(R.layout.activity_details_frete);
 
-        nome=findViewById(R.id.nomeEmpresa);
-        contato=findViewById(R.id.contatoEmpresa);
-        localizacao=findViewById(R.id.localizacaoEmpresa);
-        produto=findViewById(R.id.produtoEmpresa);
-        preco=findViewById(R.id.precoEmpresa);
-        exit=findViewById(R.id.saida);
-        arrival=findViewById(R.id.chegada);
-        weight=findViewById(R.id.peso);
+        nome = findViewById(R.id.nomeEmpresa);
+        contato = findViewById(R.id.contatoEmpresa);
+        localizacao = findViewById(R.id.localizacaoEmpresa);
+        exit = findViewById(R.id.saida);
+        arrival = findViewById(R.id.chegada);
 
 
-        accept=findViewById(R.id.buttonAccept);
-        decline=findViewById(R.id.buttonDecline);
+        entregue = findViewById(R.id.buttonEntregue);
 
-        //Get Food_id from intent
-        //if(getIntent() != null)
+
         Intent intent = getIntent();
-        empresaId = intent.getStringExtra("id");
+        empresaId = intent.getStringExtra("frete");
         System.out.println(empresaId);
 
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = reff.child("users");
+        Log.v("USERID", userRef.getKey());
 
-        reff = FirebaseDatabase.getInstance().getReference().child("empresas").child(empresaId);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
-        // Read from the database
-        reff.addValueEventListener(new ValueEventListener() {
-            String fname, contact, product, location, price, saida, chegada, peso;
+        userRef.addValueEventListener(new ValueEventListener() {
+            String fname, contact, caminhoes, location, price, saida, chegada, peso;
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //  current= dataSnapshot.getValue(empresaId);
-
-                fname = dataSnapshot.child("nome").getValue().toString();
-                contact = dataSnapshot.child("contato").getValue().toString();
-                product = dataSnapshot.child("produto").getValue().toString();
-                location = dataSnapshot.child("endereco").getValue().toString();
-                price = dataSnapshot.child("preco").getValue().toString();
-                chegada = dataSnapshot.child("horariochegada").getValue().toString();
-                saida = dataSnapshot.child("horariosaida").getValue().toString();
-                peso = dataSnapshot.child("peso").getValue().toString();
+                String email = user.getEmail();
+                fname = dataSnapshot.child(uid).child(empresaId).child("nome").getValue().toString();
+                contact = dataSnapshot.child(uid).child(empresaId).child("contato").getValue().toString();
+                location = dataSnapshot.child(uid).child(empresaId).child("endereco").getValue().toString();
+                saida = dataSnapshot.child(uid).child(empresaId).child("saida").getValue().toString();
+                chegada = dataSnapshot.child(uid).child(empresaId).child("chegada").getValue().toString();
 
                 nome.setText(fname);
-                contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact));
-                produto.setText(Html.fromHtml("<b>" + "Produto e quantidade: " + "</b> " + product));
-                localizacao.setText(Html.fromHtml("<b>" + "Localização: " + "</b> " + location));
-                exit.setText(Html.fromHtml("<b>" + "Chegada: " + "</b> " + saida));
-                arrival.setText(Html.fromHtml("<b>" + "Saída: " + "</b> " + chegada));
-                weight.setText(Html.fromHtml("<b>" + "Peso: " + "</b> " + peso));
+                localizacao.setText(Html.fromHtml("<b>" + "Telefone: " + "</b> " + location.toString()));
+                contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact.toString()));
+                exit.setText(Html.fromHtml("<b>" + "Saída: " + "</b> " + saida));
+                arrival.setText(Html.fromHtml("<b>" + "Chegada: " + "</b> " + chegada));
 
-                preco.setText("R$" + price);
-
-
-                entrega = new Entrega(contact, fname, location, saida, chegada, peso, price, product);
+                if (fname.equals("")){
+                    localizacao.setVisibility(View.INVISIBLE);
+                    contato.setVisibility(View.INVISIBLE);
+                    exit.setVisibility(View.INVISIBLE);
+                    arrival.setVisibility(View.INVISIBLE);
+                    nome.setText("Sem fretes no momento");
+                }
 
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
+            public void onCancelled(DatabaseError databaseError) {
 
-
-        decline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityCaixa();
             }
         });
 
-        accept.setOnClickListener(new View.OnClickListener() {
+
+        entregue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String keyid = mDatabase.push().getKey();
-                //FirebaseUser user = mFirebaseAuth.getInstance().getCurrentUser();
+
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                //String userId = (user.getProviderId());
                 String userId = user.getUid();
-
                 mDatabase = FirebaseDatabase.getInstance().getReference();
 
-                //databaseReference.child("users").child(userId).setValue(user);
+                entrega = new Entrega("", "", "", "", "", "", "", "");
 
-                //reff = FirebaseDatabase.getInstance().getReference().child("users").child(UserId).child("frete1");
-                //reff.setValue(entrega);
-                mDatabase.child("users").child(userId).child("frete1").setValue(entrega);
+                mDatabase.child("users").child(userId).child(empresaId).setValue(entrega);
 
+                localizacao.setVisibility(View.INVISIBLE);
+                contato.setVisibility(View.INVISIBLE);
+                exit.setVisibility(View.INVISIBLE);
+                arrival.setVisibility(View.INVISIBLE);
+                Toast.makeText(DetailsFrete.this,"Parabéns, você completou mais uma entrega!",Toast.LENGTH_LONG).show();
             }});
     }
 

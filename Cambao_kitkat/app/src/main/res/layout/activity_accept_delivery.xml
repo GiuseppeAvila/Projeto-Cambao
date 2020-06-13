@@ -98,7 +98,7 @@
 
 
         <Button
-            android:id="@+id/buttonAccept"
+            android:id="@+id/buttonEntregue"
             android:layout_width="263dp"
             android:layout_height="45dp"
             android:layout_marginLeft="75dp"
