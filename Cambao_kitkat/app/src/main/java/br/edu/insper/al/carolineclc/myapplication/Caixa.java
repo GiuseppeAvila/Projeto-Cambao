@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
     private ImageButton contato;
     private ImageButton caixa;
     private ImageButton caminhao;
@@ -50,6 +52,14 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
         caminhao = (ImageButton) findViewById(R.id.caminhao_caixa);
         caixa = (ImageButton) findViewById(R.id.caixa_caixa);
         //GetValue = findViewById(R.id.editText1);
+
+        Spinner spinnerQuantidade = (Spinner) findViewById(R.id.spinner);
+        String[] numeros = new String[] {"Nome","Horário","Valor","Cidade"};
+        ArrayAdapter<String> adapterNum =  new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, numeros);
+        adapterNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerQuantidade.setAdapter(adapterNum);
+        spinnerQuantidade.setOnItemSelectedListener(this);
+
 
 
         //empresa1=findViewById(R.id.empresa1);
@@ -105,6 +115,18 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
         // Or / And
         intent.putExtra("id", (new Long(id)).toString());
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
 

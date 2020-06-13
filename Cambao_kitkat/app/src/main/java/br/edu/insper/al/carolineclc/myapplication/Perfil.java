@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 
 public class Perfil extends AppCompatActivity {
-    private TextView nome, tel, novo;
+    private TextView nome, tel, truck, mail;
     private final String TAG = this.getClass().getName().toUpperCase();
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
@@ -38,69 +38,36 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        Intent intent = getIntent();
-        email = intent.getStringExtra("email");
-       // name = intent.getStringExtra("nome");
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child(USERS);
-        Log.v("USERID", userRef.getKey());
-
         nome = findViewById(R.id.nomeUser);
         tel = findViewById(R.id.telUser);
-        novo = findViewById(R.id.newInfo);
+        truck = findViewById(R.id.newInfo);
+        mail = findViewById(R.id.emailUser);
 
-        getUserProfile();
-       // getProviderData();
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = reff.child("users");
+        Log.v("USERID", userRef.getKey());
 
-    }
-        public void getUserProfile() {
-            // [START get_user_profile]
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if (user != null) {
-                // Name, email address, and profile photo Url
-                String name = user.getDisplayName();
-                String email = user.getEmail();
-                String placa = user.getUid();
-
-                String UserId = (user.getProviderId());
-                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(UserId).child("frete1");
-                String f = reff.getKey();
-
-                Uri photoUrl = user.getPhotoUrl();
-
-                // Check if user's email is verified
-               // boolean emailVerified = user.isEmailVerified();
-
-                String uid = user.getUid();
-
-                nome.setText(name);
-                tel.setText(f);
-                System.out.println(placa);
-            }
-            // [END get_user_profile]
-        }
-
-    public void getProviderData() {
-        // [START get_provider_data]
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                // Id of the provider (ex: google.com)
-                String providerId = profile.getProviderId();
+        String uid = user.getUid();
 
-                // UID specific to the provider
-                String uid = profile.getUid();
+        userRef.addValueEventListener(new ValueEventListener() {
+            String fname, contact, caminhoes, location, price, saida, chegada, peso;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    String email = user.getEmail();
+                    fname = dataSnapshot.child(uid).child("fullName").getValue().toString();
+                    contact = dataSnapshot.child(uid).child("phone").getValue().toString();
+                    caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
 
-                // Name, email address, and profile photo Url
-                //String name = profile.getDisplayName();
-                String email = profile.getEmail();
-               // Uri photoUrl = profile.getPhotoUrl();
+                    nome.setText(fname);
+                    tel.setText(Html.fromHtml("<b>" + "Telefone: " + "</b> " +contact.toString()));
+                    truck.setText(Html.fromHtml("<b>" + "Quantidade de caminhões: " + "</b> " +caminhoes.toString()));
+                    mail.setText(Html.fromHtml("<b>" + "email: " + "</b> " +email));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-
-
-        }}
-        // [END get_provider_data]
-    }
-    }
+            }
+        });
+    }}
 

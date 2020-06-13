@@ -53,19 +53,19 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/frete1"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
                 app:srcCompat="@drawable/buttons_verde" />
 
             <ImageButton
-                android:id="@+id/imageButton7"
+                android:id="@+id/frete2"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 app:srcCompat="@drawable/buttons" />
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/frete3"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
                 app:srcCompat="@drawable/buttons" />
