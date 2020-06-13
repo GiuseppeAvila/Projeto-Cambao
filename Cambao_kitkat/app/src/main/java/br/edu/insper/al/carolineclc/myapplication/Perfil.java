@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,8 @@ public class Perfil extends AppCompatActivity {
     private String email;
     private String userid;
     private String name;
+    private Button logout;
+
 
     private static final String USERS = "users";
 
@@ -42,6 +46,7 @@ public class Perfil extends AppCompatActivity {
         tel = findViewById(R.id.telUser);
         truck = findViewById(R.id.newInfo);
         mail = findViewById(R.id.emailUser);
+        logout = findViewById(R.id.logout);
 
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = reff.child("users");
@@ -69,5 +74,18 @@ public class Perfil extends AppCompatActivity {
 
             }
         });
-    }}
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogin();
+            }
+        });
+    }
+    public void openLogin() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+}
+
 
