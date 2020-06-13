@@ -4,13 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Fretes extends AppCompatActivity {
     private ImageButton contato;
     private ImageButton caixa;
     private ImageButton caminhao;
+    private ImageButton frete1,frete2,frete3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +31,11 @@ public class Fretes extends AppCompatActivity {
         contato = (ImageButton) findViewById(R.id.contato_fretes);
         caminhao = (ImageButton) findViewById(R.id.caminhao_fretes);
         caixa = (ImageButton) findViewById(R.id.caixa_fretes);
+
+        frete1 = (ImageButton) findViewById(R.id.frete1);
+        frete2 = (ImageButton) findViewById(R.id.frete2);
+        frete3 = (ImageButton) findViewById(R.id.frete3);
+
 
         caminhao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +57,35 @@ public class Fretes extends AppCompatActivity {
                 openActivityCaixas();
             }
         });
+
+
+
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = reff.child("users");
+        Log.v("USERID", userRef.getKey());
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            String fname, contact, caminhoes, location, price, saida, chegada, peso;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
+                if (caminhoes .equals("2")) {
+                    frete2.setVisibility(View.INVISIBLE);
+                } else if (caminhoes.equals("1")) {
+                    frete2.setVisibility(View.INVISIBLE);
+                    frete3.setVisibility(View.INVISIBLE);
+                }
+                System.out.println(caminhoes);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void openActivityFretes() {
