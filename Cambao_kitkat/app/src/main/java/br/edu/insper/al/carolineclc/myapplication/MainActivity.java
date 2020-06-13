@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"auth_failed",Toast.LENGTH_LONG).show();
                             }
                         }else {
-                            Intent intent = new Intent(MainActivity.this,MainScreen.class);
+                            Intent intent = new Intent(MainActivity.this, Bottom_nav.class);
                             startActivity(intent);
                             finish();
                         }
