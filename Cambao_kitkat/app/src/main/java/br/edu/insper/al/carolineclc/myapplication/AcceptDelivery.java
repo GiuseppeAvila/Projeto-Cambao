@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -109,28 +111,65 @@ public class AcceptDelivery extends AppCompatActivity {
             }
         });
 
-        accept.setOnClickListener(new View.OnClickListener() {
+
+        DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference userRef = reff.child("users");
+
+
+        Log.v("USERID", userRef.getKey());
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            String nomef1, nomef2, nomef3, caminhoes, price, saida, chegada, peso;
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String email = user.getEmail();
+                nomef1 = dataSnapshot.child(uid).child("frete1").child("nome").getValue().toString();
+                nomef2 = dataSnapshot.child(uid).child("frete2").child("nome").getValue().toString();
+                nomef3 = dataSnapshot.child(uid).child("frete3").child("nome").getValue().toString();
+                caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
+
+                System.out.println(nomef1);
+                System.out.println(nomef2);
+                System.out.println(nomef3);
+                System.out.println(caminhoes);
+
+                accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String keyid = mDatabase.push().getKey();
-                //FirebaseUser user = mFirebaseAuth.getInstance().getCurrentUser();
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+               // onDataChange(reff);
 
-                //String userId = (user.getProviderId());
-                String userId = user.getUid();
+                System.out.println("nomef1");
 
-                mDatabase = FirebaseDatabase.getInstance().getReference();
+                ///////////////////////////////////////////////////////////////
+                if (TextUtils.isEmpty(nomef1)) {
+                    reff.child("users").child(uid).child("frete1").setValue(entrega);
+                } else if ((!(nomef1).equals("")) && (nomef2).equals("") && Integer.parseInt(caminhoes) >= 2) {
+                    reff.child("users").child(uid).child("frete2").setValue(entrega);
+                } else if ((!(nomef1).equals("")) && (!(nomef2).equals("")) && (nomef3).equals("") && Integer.parseInt(caminhoes) == 3) {
+                    reff.child("users").child(uid).child("frete3").setValue(entrega);
+                } else {
+                    Toast.makeText(AcceptDelivery.this, "Todos os seus caminhões já estão ocupados. Complete a entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
+                }
 
-                //databaseReference.child("users").child(userId).setValue(user);
-
-                //reff = FirebaseDatabase.getInstance().getReference().child("users").child(UserId).child("frete1");
-                //reff.setValue(entrega);
-                mDatabase.child("users").child(userId).child("frete1").setValue(entrega);
                 openMainScreen();
+            }
 
-            }});
-        }
+                });
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("cancelouuuuuuu");
+
+            }
+            ////////////////////////////////////////////////////
+        });}
         public void openActivityCaixa() {
             Intent intent = new Intent(this, Caixa.class);
             startActivity(intent);

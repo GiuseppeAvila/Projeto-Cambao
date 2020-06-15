@@ -87,7 +87,8 @@ public class DetailsFrete extends AppCompatActivity {
                     contato.setVisibility(View.INVISIBLE);
                     exit.setVisibility(View.INVISIBLE);
                     arrival.setVisibility(View.INVISIBLE);
-                    nome.setText("Sem fretes no momento");
+                    nome.setText("\n"+"Sem fretes no momento");
+                    entregue.setVisibility(View.INVISIBLE);
                 }
 
             }

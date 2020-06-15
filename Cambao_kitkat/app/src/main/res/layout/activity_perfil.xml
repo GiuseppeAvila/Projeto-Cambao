@@ -67,9 +67,10 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="124dp"
         android:text="Alterar cadastro"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="542dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="535dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
