@@ -10,16 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailsFrete"></activity>
+        <activity android:name=".DetailsFrete" />
         <activity android:name=".Perfil" />
         <activity android:name=".AcceptDelivery" />
         <activity android:name=".Caixa" />
         <activity android:name=".Fretes" />
         <activity android:name=".NovoCadastro" />
         <activity android:name=".Contato" />
-        <activity android:name=".Deliveries" />
         <activity android:name=".MainScreen" />
-        <activity android:name=".Info" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

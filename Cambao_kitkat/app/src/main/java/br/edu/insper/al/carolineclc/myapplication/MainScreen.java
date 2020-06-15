@@ -1,14 +1,18 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainScreen extends AppCompatActivity {
     float x1, y1, x2, y2;
@@ -17,9 +21,7 @@ public class MainScreen extends AppCompatActivity {
     private Button ButtonNews;
     private Button ButtonFrete;
     private ImageButton imageButtonProf;
-    private ImageButton contato;
-    private ImageButton caixa;
-    private ImageButton caminhao;
+
 
 
 
@@ -31,10 +33,10 @@ public class MainScreen extends AppCompatActivity {
         ButtonMap = (Button) findViewById(R.id.ButtonMapa);
         ButtonFrete = (Button) findViewById(R.id.meu_frete);
         ButtonNews = (Button) findViewById(R.id.ButtonNews);
-        contato = (ImageButton) findViewById(R.id.contato);
-        caminhao = (ImageButton) findViewById(R.id.caminhao);
-        caixa = (ImageButton) findViewById(R.id.caixa);
         imageButtonProf = (ImageButton) findViewById(R.id.perfil);
+
+        BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setOnNavigationItemSelectedListener(naviselect);
 
 
         ButtonMap.setOnClickListener(new View.OnClickListener() {
@@ -47,38 +49,9 @@ public class MainScreen extends AppCompatActivity {
         imageButtonProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainScreen.this, Info.class));
+                startActivity(new Intent(MainScreen.this, Contato.class));
             }
         });
-
-        ButtonFrete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityFretes();
-            }
-        });
-
-        caminhao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityFretes();
-            }
-        });
-        caixa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityCaixa();
-            }
-        });
-
-
-        contato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityContacts();
-            }
-        });
-
 
 
         ButtonNews.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +70,28 @@ public class MainScreen extends AppCompatActivity {
             }
         });
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener naviselect =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_fretes:
+                            openActivityFretes();
+                            break;
+
+                        case R.id.nav_phone:
+                            openActivityContacts();
+                            break;
+
+                        case R.id.nav_recomendados:
+                            openActivityCaixa();
+                            break;
+                    }
+                    return true;
+                }
+            };
 
     public void openMap() {
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
@@ -117,7 +112,7 @@ public class MainScreen extends AppCompatActivity {
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
                 if(x1 < x2){
-                    Intent i = new Intent(MainScreen.this, Deliveries.class);
+                    Intent i = new Intent(MainScreen.this, Fretes.class);
                     startActivity(i);
                 }else if(x1 > x2){
                     Intent i = new Intent(MainScreen.this, Contato.class);
@@ -129,7 +124,7 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void openActivityDeliveries() {
-        Intent intent = new Intent(this, Deliveries.class);
+        Intent intent = new Intent(this, Fretes.class);
         startActivity(intent);
     }
 
