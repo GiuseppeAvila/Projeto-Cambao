@@ -149,10 +149,16 @@ public class AcceptDelivery extends AppCompatActivity {
                 ///////////////////////////////////////////////////////////////
                 if (TextUtils.isEmpty(nomef1)) {
                     reff.child("users").child(uid).child("frete1").setValue(entrega);
+                    Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
                 } else if ((!(nomef1).equals("")) && (nomef2).equals("") && Integer.parseInt(caminhoes) >= 2) {
                     reff.child("users").child(uid).child("frete2").setValue(entrega);
+                    Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
                 } else if ((!(nomef1).equals("")) && (!(nomef2).equals("")) && (nomef3).equals("") && Integer.parseInt(caminhoes) == 3) {
                     reff.child("users").child(uid).child("frete3").setValue(entrega);
+                    Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
                 } else {
                     Toast.makeText(AcceptDelivery.this, "Todos os seus caminhões já estão ocupados. Complete a entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
                 }
