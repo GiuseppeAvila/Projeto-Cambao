@@ -1,4 +1,0 @@
-#Fri Jun 12 17:10:35 BRT 2020
-base.0=C\:\\Users\\carol\\Documents\\INSPER\\3 Semestre\\DesAgil\\Git\\Projeto-Cambao\\Bottom_navigation\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

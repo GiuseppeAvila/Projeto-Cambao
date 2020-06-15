@@ -1,11 +1,13 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,9 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener {
-    private ImageButton contato;
-    private ImageButton caixa;
-    private ImageButton caminhao;
+
     private ImageButton btn;
     private TextView empresa1;
     DatabaseReference reff;
@@ -48,9 +49,7 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caixa);
-        contato = (ImageButton) findViewById(R.id.contato_caixa);
-        caminhao = (ImageButton) findViewById(R.id.caminhao_caixa);
-        caixa = (ImageButton) findViewById(R.id.caixa_caixa);
+
         //GetValue = findViewById(R.id.editText1);
 
         Spinner spinnerQuantidade = (Spinner) findViewById(R.id.spinner);
@@ -61,11 +60,13 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
         spinnerQuantidade.setOnItemSelectedListener(this);
 
 
-
         //empresa1=findViewById(R.id.empresa1);
         // btn=(ImageButton) findViewById(R.id.imageButton15);
         ListView listview = (ListView) findViewById(R.id.listView1);
         listview.setOnItemClickListener(this);
+
+        BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setOnNavigationItemSelectedListener(naviselect);
 
 
         reff = FirebaseDatabase.getInstance().getReference().child("empresas");
@@ -127,6 +128,43 @@ public class Caixa extends AppCompatActivity implements AdapterView.OnItemClickL
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener naviselect =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_home:
+                            openActivityHome();
+                            break;
+
+                        case R.id.nav_fretes:
+                            openActivityFretes();
+                            break;
+
+                        case R.id.nav_phone:
+                            openActivityContatos();
+                            break;
+                    }
+                    return true;
+                }
+            };
+
+    public void openActivityHome() {
+        Intent intent = new Intent(this, MainScreen.class);
+        startActivity(intent);
+    }
+
+
+    public void openActivityFretes() {
+        Intent intent = new Intent(this, Fretes.class);
+        startActivity(intent);
+    }
+    public void openActivityContatos() {
+        Intent intent = new Intent(this, Contato.class);
+        startActivity(intent);
     }
 }
 
