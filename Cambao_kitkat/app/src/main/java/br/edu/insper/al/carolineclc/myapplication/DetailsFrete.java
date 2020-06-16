@@ -131,7 +131,7 @@ public class DetailsFrete extends AppCompatActivity {
                             reff.child("users").child(uid).child("antiga1").setValue(antiga);
 
                         }
-                        else if ((!(old1).equals("")) && (old2).equals("") ) {
+                        else if ((!(TextUtils.isEmpty(old1))) && (TextUtils.isEmpty(old2)) ) {
                             reff.child("users").child(uid).child("antiga2").setValue(entrega);
                         }
                         else if ((!(old1).equals("")) && (!(old2).equals("")) && (old3).equals("") ) {

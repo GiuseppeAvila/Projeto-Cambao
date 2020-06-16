@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 
 public class Perfil extends AppCompatActivity {
-    private TextView nome, tel, truck, mail;
+    private TextView nome, tel, truck, mail, oldf;
     private final String TAG = this.getClass().getName().toUpperCase();
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
@@ -48,6 +48,7 @@ public class Perfil extends AppCompatActivity {
         mail = findViewById(R.id.emailUser);
         logout = findViewById(R.id.logout);
         alterar = findViewById(R.id.buttonAlterarPerfil);
+        oldf = findViewById(R.id.oldf);
 
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = reff.child("users");
@@ -57,18 +58,21 @@ public class Perfil extends AppCompatActivity {
         String uid = user.getUid();
 
         userRef.addValueEventListener(new ValueEventListener() {
-            String fname, contact, caminhoes, location, price, saida, chegada, peso;
+            String fname, contact, caminhoes, location, price, saida, chegada, peso,f;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                     String email = user.getEmail();
                     fname = dataSnapshot.child(uid).child("fullName").getValue().toString();
                     contact = dataSnapshot.child(uid).child("phone").getValue().toString();
                     caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
+                    f = dataSnapshot.child(uid).child("entregas").getValue().toString();
 
                     nome.setText(fname);
                     tel.setText(Html.fromHtml("<b>" + "Telefone: " + "</b> " +contact.toString()));
                     truck.setText(Html.fromHtml("<b>" + "Quantidade de caminhões: " + "</b> " +caminhoes.toString()));
                     mail.setText(Html.fromHtml("<b>" + "email: " + "</b> " +email));
+                    oldf.setText(Html.fromHtml("<b>" + "Fretes concluídos: " + "</b> " +f));
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
