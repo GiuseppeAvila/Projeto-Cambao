@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fretes">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="532dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Meus Fretes"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/frete2"
+        android:layout_width="409dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="388dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp" />
+
+    <TextView
+        android:id="@+id/c1"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Caminhão 1 "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/frete1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/frete4"
+        android:layout_width="405dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="260dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons_verde"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp" />
+
+    <ImageButton
+        android:id="@+id/frete3"
+        android:layout_width="402dp"
+        android:layout_height="36dp"
+
+        android:layout_marginBottom="308dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="9dp" />
+
+    <TextView
+        android:id="@+id/c2"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="344dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Caminhão 2 "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/frete1"
+        android:layout_width="411dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="444dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons_verde"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-6dp" />
+
+    <ImageButton
+        android:id="@+id/frete6"
+        android:layout_width="414dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="112dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-2dp" />
+
+    <TextView
+        android:id="@+id/c3"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="200dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Caminhão 3 "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/frete5"
+        android:layout_width="416dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="152dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/buttons_verde"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp" />
+
+    <Button
+        android:id="@+id/completados"
+        android:layout_width="82dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="532dp"
+        android:background="#4A34459E"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
