@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +67,8 @@ public class DetailsFrete extends AppCompatActivity {
         String uid = user.getUid();
 
         userRef.addValueEventListener(new ValueEventListener() {
-            String fname, contact, caminhoes, location, price, saida, chegada, peso, num;
+            String fname, contact, caminhoes, location, price, saida, chegada, peso, num, product;
+            String old1, old2,old3,old4,old5,old6;
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -76,7 +78,16 @@ public class DetailsFrete extends AppCompatActivity {
                 location = dataSnapshot.child(uid).child(empresaId).child("endereco").getValue().toString();
                 saida = dataSnapshot.child(uid).child(empresaId).child("saida").getValue().toString();
                 chegada = dataSnapshot.child(uid).child(empresaId).child("chegada").getValue().toString();
+                product = dataSnapshot.child(uid).child(empresaId).child("produto").getValue().toString();
+
                 num=dataSnapshot.child(uid).child("entregas").getValue().toString();
+
+                old1 = dataSnapshot.child(uid).child("antiga1").child("nome").getValue().toString();
+                old2 = dataSnapshot.child(uid).child("antiga2").child("nome").getValue().toString();
+                old3 = dataSnapshot.child(uid).child("antiga3").child("chegada").getValue().toString();
+                old4 = dataSnapshot.child(uid).child("antiga4").child("chegada").getValue().toString();
+                old5 = dataSnapshot.child(uid).child("antiga5").child("chegada").getValue().toString();
+                old6 = dataSnapshot.child(uid).child("antiga6").child("chegada").getValue().toString();
 
                 numero = Integer.parseInt(num);
                 nome.setText(fname);
@@ -103,6 +114,7 @@ public class DetailsFrete extends AppCompatActivity {
                         mDatabase = FirebaseDatabase.getInstance().getReference();
 
                         entrega = new Entrega("", "", "", "", "", "", "", "");
+                        Entrega antiga = new Entrega(contact, fname, location, saida, chegada, "", "", product);
 
                         mDatabase.child("users").child(userId).child(empresaId).setValue(entrega);
 
@@ -115,7 +127,24 @@ public class DetailsFrete extends AppCompatActivity {
 
                         reff.child("users").child(userId).child("entregas").setValue(Integer.toString(numero));
 
+                        if (TextUtils.isEmpty(old1)) {
+                            reff.child("users").child(uid).child("antiga1").setValue(antiga);
 
+                        }
+                        else if ((!(old1).equals("")) && (old2).equals("") ) {
+                            reff.child("users").child(uid).child("antiga2").setValue(entrega);
+                        }
+                        else if ((!(old1).equals("")) && (!(old2).equals("")) && (old3).equals("") ) {
+                            reff.child("users").child(uid).child("antiga3").setValue(entrega);
+                        }
+
+                        else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (old4).equals("") ) {
+                            reff.child("users").child(uid).child("antiga4").setValue(entrega);
+                        }else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (!(old4).equals("")) && (old5).equals("") ) {
+                            reff.child("users").child(uid).child("antiga5").setValue(entrega);
+                        }else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (!(old4).equals(""))&& (!(old5).equals("")) && (old6).equals("")) {
+                            reff.child("users").child(uid).child("antiga6").setValue(entrega);
+                        }
                         Toast.makeText(DetailsFrete.this,"Parabéns, você completou mais uma entrega!",Toast.LENGTH_LONG).show();
                     }});
 

@@ -185,6 +185,14 @@ public class Fretes extends AppCompatActivity {
                 startActivity(intent);            }
         });
 
+        completados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityOld();
+            }
+        });
+
+
 
     }
 
@@ -199,6 +207,10 @@ public class Fretes extends AppCompatActivity {
     }
     public void openActivityCaixas() {
         Intent intent = new Intent(this, Caixa.class);
+        startActivity(intent);
+    }
+    public void openActivityOld() {
+        Intent intent = new Intent(this, OldFretes.class);
         startActivity(intent);
     }
 }
