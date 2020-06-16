@@ -7,42 +7,6 @@
     tools:context=".Fretes">
 
 
-
-
-    <ImageButton
-        android:id="@+id/caixa_fretes"
-        android:layout_width="84dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/box" />
-
-    <ImageButton
-        android:id="@+id/caminhao_fretes"
-        android:layout_width="84dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/truck" />
-
-    <ImageButton
-        android:id="@+id/contato_fretes"
-        android:layout_width="84dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/phone" />
-
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="225dp"

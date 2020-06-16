@@ -1,12 +1,16 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import br.edu.insper.al.carolineclc.myapplication.R;
 
@@ -14,33 +18,37 @@ public class Contato extends AppCompatActivity {
     float x1, y1, x2, y2;
 
 
-    private ImageButton caixa;
-    private ImageButton caminhao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contato);
+        BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setOnNavigationItemSelectedListener(naviselect);
 
-
-        caixa = (ImageButton) findViewById(R.id.caixa_contato);
-        caminhao = (ImageButton) findViewById(R.id.caminhao_contato);
-
-        caixa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityMainScreen();
-            }
-        });
-
-        caminhao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityFretes();
-            }
-        });
 
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener naviselect =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_fretes:
+                            openActivityFretes();
+                            break;
+
+                        case R.id.nav_home:
+                            openActivityMainScreen();
+                            break;
+
+                        case R.id.nav_recomendados:
+                            openActivityDeliveries();
+                            break;
+                    }
+                    return true;
+                }
+            };
 
     //MÉTODO PARA SLIDE DE TELA
     public boolean onTouchEvent(MotionEvent touchEvent){
@@ -56,7 +64,7 @@ public class Contato extends AppCompatActivity {
                     Intent i = new Intent(Contato.this, MainScreen.class);
                     startActivity(i);
                 } else if(x1 > x2){
-                    Intent i = new Intent(Contato.this, Deliveries.class);
+                    Intent i = new Intent(Contato.this, Fretes.class);
                     startActivity(i);
                 }
                 break;
@@ -65,7 +73,7 @@ public class Contato extends AppCompatActivity {
     }
 
     public void openActivityDeliveries() {
-        Intent intent = new Intent(this, Deliveries.class);
+        Intent intent = new Intent(this, Caixa.class);
         startActivity(intent);
     }
 
