@@ -97,19 +97,6 @@
             android:textSize="24sp" />
 
 
-        <Button
-            android:id="@+id/buttonEntregue"
-            android:layout_width="263dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="75dp"
-            android:layout_marginBottom="0dp"
-            android:background="#59B340"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Aceitar"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/buttonDecline"
@@ -125,6 +112,47 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonEntregue"
+            android:layout_width="263dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginBottom="50dp"
+            android:background="#59B340"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonC2"
+            android:layout_width="263dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginBottom="50dp"
+            android:background="#59B340"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <Button
+            android:id="@+id/buttonC3"
+            android:layout_width="263dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginBottom="50dp"
+            android:background="#59B340"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
 
     </LinearLayout>

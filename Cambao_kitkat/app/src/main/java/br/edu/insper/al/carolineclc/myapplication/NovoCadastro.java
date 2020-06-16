@@ -70,6 +70,7 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                 String name = nome.getText().toString();
                 String tel = telefone.getText().toString();
                 String plate = placa.getText().toString();
+                String entregas="0";
                // String num=numeros.toString();
 
                 int id = spinnerQuantidade.getSelectedItemPosition();
@@ -78,10 +79,19 @@ public class NovoCadastro extends AppCompatActivity implements AdapterView.OnIte
                 Entrega frete1 = new Entrega("", "", "", "", "", "", "", "");
                 Entrega frete2 = new Entrega("", "", "", "", "", "", "", "");
                 Entrega frete3 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega frete4 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega frete5 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega frete6 = new Entrega("", "", "", "", "", "", "", "");
+
+                Entrega antigo1 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega antigo2 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega antigo3 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega antigo4 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega antigo5 = new Entrega("", "", "", "", "", "", "", "");
+                Entrega antigo6 = new Entrega("", "", "", "", "", "", "", "");
 
 
-                benutzer = new User(name, email, n, plate, tel, frete1, frete2, frete3);
-
+                benutzer = new User(name, email, n, plate, tel, frete1, frete2, frete3, frete4, frete5, frete6, antigo1,antigo2, antigo3, antigo4, antigo5,antigo6, entregas);
 
 
                 if(email.isEmpty()){

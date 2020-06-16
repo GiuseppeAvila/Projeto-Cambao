@@ -32,7 +32,7 @@ public class Perfil extends AppCompatActivity {
     private String email;
     private String userid;
     private String name;
-    private Button logout;
+    private Button logout, alterar;
 
 
     private static final String USERS = "users";
@@ -47,6 +47,7 @@ public class Perfil extends AppCompatActivity {
         truck = findViewById(R.id.newInfo);
         mail = findViewById(R.id.emailUser);
         logout = findViewById(R.id.logout);
+        alterar = findViewById(R.id.buttonAlterarPerfil);
 
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = reff.child("users");
@@ -81,9 +82,21 @@ public class Perfil extends AppCompatActivity {
                 openLogin();
             }
         });
+
+
+        alterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAlterarLogin();
+            }
+        });
     }
     public void openLogin() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openAlterarLogin() {
+        Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
     }
 }

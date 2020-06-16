@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AcceptDelivery extends AppCompatActivity {
     private TextView nome, contato, localizacao, produto, preco, exit, arrival, weight;
-    private Button accept, decline;
+    private Button accept, decline, accept2, accept3;
     DatabaseReference reff;
     private final String TAG = this.getClass().getName().toUpperCase();
     FirebaseAuth mFirebaseAuth;
@@ -55,6 +55,10 @@ public class AcceptDelivery extends AppCompatActivity {
 
         accept=findViewById(R.id.buttonEntregue);
         decline=findViewById(R.id.buttonDecline);
+
+        accept2=findViewById(R.id.buttonC2);
+        accept3=findViewById(R.id.buttonC3);
+
 
         //Get Food_id from intent
         //if(getIntent() != null)
@@ -124,7 +128,7 @@ public class AcceptDelivery extends AppCompatActivity {
 
 
         userRef.addValueEventListener(new ValueEventListener() {
-            String nomef1, nomef2, nomef3, caminhoes, price, saida, chegada, peso;
+            String nomef1, nomef2, nomef3,nomef4, nomef5, nomef6, caminhoes, price, saida, chegada, peso, nomec1, nomec2, nomec3;
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,11 +137,20 @@ public class AcceptDelivery extends AppCompatActivity {
                 nomef2 = dataSnapshot.child(uid).child("frete2").child("nome").getValue().toString();
                 nomef3 = dataSnapshot.child(uid).child("frete3").child("nome").getValue().toString();
                 caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
+                nomec1 = dataSnapshot.child(uid).child("nomec1").getValue().toString();
+                nomec2 = dataSnapshot.child(uid).child("nomec2").getValue().toString();
+                nomec3 = dataSnapshot.child(uid).child("nomec3").getValue().toString();
 
                 System.out.println(nomef1);
                 System.out.println(nomef2);
                 System.out.println(nomef3);
                 System.out.println(caminhoes);
+
+                accept.setText(nomec1);
+                accept2.setText(nomec2);
+                accept3.setText(nomec3);
+
+
 
                 accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,18 +168,72 @@ public class AcceptDelivery extends AppCompatActivity {
                     reff.child("users").child(uid).child("frete2").setValue(entrega);
                     Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
 
-                } else if ((!(nomef1).equals("")) && (!(nomef2).equals("")) && (nomef3).equals("") && Integer.parseInt(caminhoes) == 3) {
-                    reff.child("users").child(uid).child("frete3").setValue(entrega);
-                    Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
-
                 } else {
-                    Toast.makeText(AcceptDelivery.this, "Todos os seus caminhões já estão ocupados. Complete a entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AcceptDelivery.this, "Este caminhão está muito ocupado! Complete alguma entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
                 }
 
                 openMainScreen();
-            }
+            }});
 
-                });
+                if (Integer.parseInt(caminhoes) >= 2){
+                    accept2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // onDataChange(reff);
+
+                            System.out.println("nomef1");
+
+                            ///////////////////////////////////////////////////////////////
+                            if (TextUtils.isEmpty(nomef3)) {
+                                reff.child("users").child(uid).child("frete1").setValue(entrega);
+                                Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
+                            } else if ((!(nomef3).equals("")) && (nomef4).equals("") && Integer.parseInt(caminhoes) >= 2) {
+                                reff.child("users").child(uid).child("frete2").setValue(entrega);
+                                Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
+                            } else {
+                                Toast.makeText(AcceptDelivery.this, "Este caminhão está muito ocupado! Complete alguma entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
+                            }
+
+                            openMainScreen();
+                        }});
+                }
+
+                if (Integer.parseInt(caminhoes)==3){
+                    accept2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // onDataChange(reff);
+
+                            System.out.println("nomef1");
+
+                            ///////////////////////////////////////////////////////////////
+                            if (TextUtils.isEmpty(nomef5)) {
+                                reff.child("users").child(uid).child("frete1").setValue(entrega);
+                                Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
+                            } else if ((!(nomef5).equals("")) && (nomef6).equals("") && Integer.parseInt(caminhoes) >= 2) {
+                                reff.child("users").child(uid).child("frete2").setValue(entrega);
+                                Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
+
+                            } else {
+                                Toast.makeText(AcceptDelivery.this, "Este caminhão está muito ocupado! Complete alguma entrega para aceitar o novo frete", Toast.LENGTH_LONG).show();
+                            }
+
+                            openMainScreen();
+                        }});
+                }
+
+
+                if (caminhoes.equals("2")){
+                    accept3.setVisibility(View.GONE);
+
+                }else if (caminhoes.equals("1")){
+                    accept2.setVisibility(View.GONE);
+                    accept3.setVisibility(View.GONE);
+
+                }
             }
 
             @Override
