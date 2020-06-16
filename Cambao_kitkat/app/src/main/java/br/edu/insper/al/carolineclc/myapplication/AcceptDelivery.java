@@ -185,11 +185,11 @@ public class AcceptDelivery extends AppCompatActivity {
 
                             ///////////////////////////////////////////////////////////////
                             if (TextUtils.isEmpty(nomef3)) {
-                                reff.child("users").child(uid).child("frete1").setValue(entrega);
+                                reff.child("users").child(uid).child("frete3").setValue(entrega);
                                 Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
 
                             } else if ((!(nomef3).equals("")) && (nomef4).equals("") && Integer.parseInt(caminhoes) >= 2) {
-                                reff.child("users").child(uid).child("frete2").setValue(entrega);
+                                reff.child("users").child(uid).child("frete4").setValue(entrega);
                                 Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
 
                             } else {
@@ -210,11 +210,11 @@ public class AcceptDelivery extends AppCompatActivity {
 
                             ///////////////////////////////////////////////////////////////
                             if (TextUtils.isEmpty(nomef5)) {
-                                reff.child("users").child(uid).child("frete1").setValue(entrega);
+                                reff.child("users").child(uid).child("frete5").setValue(entrega);
                                 Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
 
                             } else if ((!(nomef5).equals("")) && (nomef6).equals("") && Integer.parseInt(caminhoes) >= 2) {
-                                reff.child("users").child(uid).child("frete2").setValue(entrega);
+                                reff.child("users").child(uid).child("frete6").setValue(entrega);
                                 Toast.makeText(AcceptDelivery.this, "Frete adicionado", Toast.LENGTH_LONG).show();
 
                             } else {

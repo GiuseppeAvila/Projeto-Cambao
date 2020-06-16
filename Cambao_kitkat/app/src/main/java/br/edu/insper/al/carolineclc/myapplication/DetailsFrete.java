@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DetailsFrete extends AppCompatActivity {
 
     private TextView nome, contato, localizacao, produto, preco, exit, arrival, weight;
-    private Button entregue;
+    private Button entregue, completados;
     DatabaseReference reff;
     private final String TAG = this.getClass().getName().toUpperCase();
     FirebaseAuth mFirebaseAuth;
@@ -36,6 +36,7 @@ public class DetailsFrete extends AppCompatActivity {
     private FirebaseDatabase database;
     Caixa current;
     String empresaId="";
+    private int numero;
 
 
     @Override
@@ -65,7 +66,7 @@ public class DetailsFrete extends AppCompatActivity {
         String uid = user.getUid();
 
         userRef.addValueEventListener(new ValueEventListener() {
-            String fname, contact, caminhoes, location, price, saida, chegada, peso;
+            String fname, contact, caminhoes, location, price, saida, chegada, peso, num;
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,7 +76,9 @@ public class DetailsFrete extends AppCompatActivity {
                 location = dataSnapshot.child(uid).child(empresaId).child("endereco").getValue().toString();
                 saida = dataSnapshot.child(uid).child(empresaId).child("saida").getValue().toString();
                 chegada = dataSnapshot.child(uid).child(empresaId).child("chegada").getValue().toString();
+                num=dataSnapshot.child(uid).child("entregas").getValue().toString();
 
+                numero = Integer.parseInt(num);
                 nome.setText(fname);
                 localizacao.setText(Html.fromHtml("<b>" + "Telefone: " + "</b> " + location.toString()));
                 contato.setText(Html.fromHtml("<b>" + "Contato: " + "</b> " + contact.toString()));
@@ -91,6 +94,31 @@ public class DetailsFrete extends AppCompatActivity {
                     entregue.setVisibility(View.INVISIBLE);
                 }
 
+                entregue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        String userId = user.getUid();
+                        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                        entrega = new Entrega("", "", "", "", "", "", "", "");
+
+                        mDatabase.child("users").child(userId).child(empresaId).setValue(entrega);
+
+                        localizacao.setVisibility(View.INVISIBLE);
+                        contato.setVisibility(View.INVISIBLE);
+                        exit.setVisibility(View.INVISIBLE);
+                        arrival.setVisibility(View.INVISIBLE);
+
+                        numero++;
+
+                        reff.child("users").child(userId).child("entregas").setValue(Integer.toString(numero));
+
+
+                        Toast.makeText(DetailsFrete.this,"Parabéns, você completou mais uma entrega!",Toast.LENGTH_LONG).show();
+                    }});
+
             }
 
             @Override
@@ -100,24 +128,7 @@ public class DetailsFrete extends AppCompatActivity {
         });
 
 
-        entregue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String userId = user.getUid();
-                mDatabase = FirebaseDatabase.getInstance().getReference();
-
-                entrega = new Entrega("", "", "", "", "", "", "", "");
-
-                mDatabase.child("users").child(userId).child(empresaId).setValue(entrega);
-
-                localizacao.setVisibility(View.INVISIBLE);
-                contato.setVisibility(View.INVISIBLE);
-                exit.setVisibility(View.INVISIBLE);
-                arrival.setVisibility(View.INVISIBLE);
-                Toast.makeText(DetailsFrete.this,"Parabéns, você completou mais uma entrega!",Toast.LENGTH_LONG).show();
-            }});
     }
 
     public void openActivityCaixa() {
