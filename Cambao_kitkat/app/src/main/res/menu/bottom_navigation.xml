@@ -14,7 +14,7 @@
         />
     <item
         android:id="@+id/nav_recomendados"
-        android:icon="@drawable/box"
+        android:icon="@drawable/ic_package"
         />
 
     <item
