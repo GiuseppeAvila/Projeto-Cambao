@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <EditText
         android:id="@+id/TextSenha"
         android:layout_width="wrap_content"
@@ -33,6 +35,13 @@
 
     <Button
         android:id="@+id/ButtonCadastro"
+        android:elevation="10dp"
+        android:translationZ="5dp"
+        android:stateListAnimator="@null"
+
+        android:background="@drawable/gradient"
+
+        android:textColor="@android:color/white"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginBottom="84dp"
@@ -43,9 +52,16 @@
 
     <Button
         android:id="@+id/ButtonLogin"
+        android:elevation="10dp"
+        android:translationZ="5dp"
+        android:stateListAnimator="@null"
+
+        android:background="@drawable/gradient"
+
         android:layout_width="263dp"
         android:layout_height="45dp"
         android:layout_marginBottom="156dp"
+        android:textColor="@android:color/white"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
