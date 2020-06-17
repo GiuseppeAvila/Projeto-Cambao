@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Fretes extends AppCompatActivity {
     private ImageButton frete1,frete2,frete3,frete4,frete5,frete6, completados;
-    private TextView caminhao1,caminhao2,caminhao3;
+    private TextView caminhao1,caminhao2,caminhao3, textfrete1,textfrete2,textfrete3,textfrete4,textfrete5,textfrete6;
     private Button entregue;
 
 
@@ -46,6 +46,13 @@ public class Fretes extends AppCompatActivity {
         caminhao1=findViewById(R.id.c1);
         caminhao2=findViewById(R.id.c2);
         caminhao3=findViewById(R.id.c3);
+
+        textfrete1 = (TextView) findViewById(R.id.textfrete1);
+        textfrete2 = (TextView) findViewById(R.id.textfrete2);
+        textfrete3 = (TextView) findViewById(R.id.textfrete3);
+        textfrete4 = (TextView) findViewById(R.id.textfrete4);
+        textfrete5 = (TextView) findViewById(R.id.textfrete5);
+        textfrete6 = (TextView) findViewById(R.id.textfrete6);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
         bottomnav.setOnNavigationItemSelectedListener(naviselect);
@@ -69,31 +76,49 @@ public class Fretes extends AppCompatActivity {
                 nomeC2=dataSnapshot.child(uid).child("nomec2").getValue().toString();
                 nomeC3=dataSnapshot.child(uid).child("nomec3").getValue().toString();
                 num=dataSnapshot.child(uid).child("entregas").getValue().toString();
-                fname1 = dataSnapshot.child(uid).child("frete1").child("contato").getValue().toString();
-                fname2 = dataSnapshot.child(uid).child("frete2").child("contato").getValue().toString();
-                fname3 = dataSnapshot.child(uid).child("frete3").child("contato").getValue().toString();
-                fname4 = dataSnapshot.child(uid).child("frete4").child("contato").getValue().toString();
-                fname5 = dataSnapshot.child(uid).child("frete5").child("contato").getValue().toString();
-                fname6 = dataSnapshot.child(uid).child("frete6").child("contato").getValue().toString();
+                fname1 = dataSnapshot.child(uid).child("frete1").child("chegada").getValue().toString();
+                fname2 = dataSnapshot.child(uid).child("frete2").child("chegada").getValue().toString();
+                fname3 = dataSnapshot.child(uid).child("frete3").child("chegada").getValue().toString();
+                fname4 = dataSnapshot.child(uid).child("frete4").child("chegada").getValue().toString();
+                fname5 = dataSnapshot.child(uid).child("frete5").child("chegada").getValue().toString();
+                fname6 = dataSnapshot.child(uid).child("frete6").child("chegada").getValue().toString();
 
 
                 if (fname1.equals("")){
                     frete1.setImageResource(R.drawable.buttons);
+                    textfrete1.setText(" ");
+                }else{
+                    textfrete1.setText(fname1);
                 }
                 if (fname2.equals("")){
                     frete2.setImageResource(R.drawable.buttons);
+                    textfrete2.setText(" ");
+                }else{
+                    textfrete2.setText(fname2);
                 }
                 if (fname3.equals("")){
                     frete3.setImageResource(R.drawable.buttons);
+                    textfrete3.setText(" ");
+                }else{
+                    textfrete3.setText(fname3);
                 }
                 if (fname4.equals("")){
                     frete4.setImageResource(R.drawable.buttons);
+                    textfrete4.setText(" ");
+                }else{
+                    textfrete4.setText(fname4);
                 }
                 if (fname5.equals("")){
                     frete5.setImageResource(R.drawable.buttons);
+                    textfrete5.setText(" ");
+                }else{
+                    textfrete5.setText(fname5);
                 }
                 if (fname6.equals("")){
                     frete6.setImageResource(R.drawable.buttons);
+                    textfrete6.setText(" ");
+                }else{
+                    textfrete6.setText(fname6);
                 }
 
 
@@ -111,12 +136,19 @@ public class Fretes extends AppCompatActivity {
                     frete5.setVisibility(View.INVISIBLE);
                     frete6.setVisibility(View.INVISIBLE);
                     caminhao3.setVisibility(View.INVISIBLE);
+                    textfrete5.setVisibility(View.INVISIBLE);
+                    textfrete6.setVisibility(View.INVISIBLE);
+
 
                 } else if (caminhoes.equals("1")) {
                     frete3.setVisibility(View.INVISIBLE);
                     frete4.setVisibility(View.INVISIBLE);
                     frete5.setVisibility(View.INVISIBLE);
                     frete6.setVisibility(View.INVISIBLE);
+                    textfrete3.setVisibility(View.INVISIBLE);
+                    textfrete4.setVisibility(View.INVISIBLE);
+                    textfrete5.setVisibility(View.INVISIBLE);
+                    textfrete6.setVisibility(View.INVISIBLE);
                     caminhao2.setVisibility(View.INVISIBLE);
                     caminhao3.setVisibility(View.INVISIBLE);
 

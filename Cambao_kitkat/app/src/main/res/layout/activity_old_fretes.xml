@@ -32,6 +32,8 @@
 
                 <ImageButton
                     android:id="@+id/old1"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/buttons"
@@ -39,6 +41,8 @@
 
                 <ImageButton
                     android:id="@+id/old2"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/old1"
@@ -46,12 +50,16 @@
 
                 <ImageButton
                     android:id="@+id/old3"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/old2"
                     app:srcCompat="@drawable/buttons" />
                 <ImageButton
                     android:id="@+id/old4"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/old3"
@@ -59,6 +67,8 @@
 
                 <ImageButton
                     android:id="@+id/old5"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/old4"
@@ -66,6 +76,8 @@
 
                 <ImageButton
                     android:id="@+id/old6"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/old5"

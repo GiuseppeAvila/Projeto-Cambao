@@ -38,6 +38,7 @@
                     android:id="@+id/c1"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -47,50 +48,86 @@
 
                 <ImageButton
                     android:id="@+id/frete1"
+                    android:background="@color/colorWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/c1"
-
-                    android:backgroundTint="@color/colorWhite"
                     app:srcCompat="@drawable/buttons_verde" />
 
                 <TextView
                     android:id="@+id/textfrete1"
                     android:layout_width="match_parent"
-                    android:layout_height="85dp"
+                    android:layout_height="70dp"
                     android:layout_below="@+id/c1"
                     android:layout_toRightOf="@+id/frete1"
-                    android:text="TextView" />
+                    android:background="@color/colorWhite"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/textfrete2"
                     android:layout_width="match_parent"
-                    android:layout_height="85dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
                     android:layout_below="@+id/textfrete1"
                     android:layout_toRightOf="@+id/frete2"
-                    android:text="TextView" />
+                    android:textColor="@color/colorBlack"
+                    android:background="@color/colorWhite"/>
                 <TextView
                     android:id="@+id/textfrete3"
                     android:layout_width="match_parent"
-                    android:layout_height="85dp"
+                    android:layout_height="70dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
                     android:layout_below="@+id/c2"
+                    android:textColor="@color/colorBlack"
+                    android:background="@color/colorWhite"
                     android:layout_toRightOf="@+id/frete3"
-                    android:text="TextView" />
-                <TextView
-                    android:id="@+id/textfrete4"
-                    android:layout_width="match_parent"
-                    android:layout_height="85dp"
-                    android:layout_below="@+id/textfrete3"
-                    android:layout_toRightOf="@+id/frete4"
-                    android:text="TextView" />
+                    />
 
                 <ImageButton
                     android:id="@+id/frete2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
                     app:srcCompat="@drawable/buttons_verde"
-                    android:backgroundTint="@color/colorWhite"
                     android:layout_below="@+id/frete1"/>
+                <TextView
+                    android:id="@+id/textfrete4"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/textfrete3"
+                    android:layout_toRightOf="@+id/frete4"
+                    android:background="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/textfrete5"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_below="@+id/c3"
+                    android:layout_toRightOf="@+id/frete5"
+                    android:background="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textfrete6"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_below="@+id/textfrete5"
+                    android:layout_toRightOf="@+id/frete6"
+                    android:background="@color/colorWhite" />
+
+
 
                 <TextView
                     android:id="@+id/c2"
@@ -107,8 +144,8 @@
                     android:id="@+id/frete3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorWhite"
                     android:layout_below="@+id/c2"
+                    android:background="@color/colorWhite"
                     app:srcCompat="@drawable/buttons_verde" />
 
                 <ImageButton
@@ -116,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/frete3"
-                    android:backgroundTint="@color/colorWhite"
+                    android:background="@color/colorWhite"
                     android:layout_marginTop="-4dp"
                     app:srcCompat="@drawable/buttons_verde" />
 
@@ -128,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="Caminhão 3 "
+                    android:background="@color/colorWhite"
                     android:layout_below="@+id/frete4"
                     android:textSize="24sp" />
 
@@ -137,14 +175,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/c3"
+                    android:hapticFeedbackEnabled="false"
+                    android:background="@color/colorWhite"
                     android:backgroundTint="@color/colorWhite"
                     app:srcCompat="@drawable/buttons_verde" />
 
                 <ImageButton
                     android:id="@+id/frete6"
-                    android:layout_marginRight="150dp"
+                    android:background="@color/colorWhite"
                     android:layout_width="wrap_content"
-                    android:backgroundTint="@color/colorWhite"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/buttons_verde"
                     android:layout_below="@id/frete5"/>
