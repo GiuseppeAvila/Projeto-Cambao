@@ -34,6 +34,7 @@
     <Button
         android:id="@+id/ButtonCadastro"
         android:background="@drawable/gradient"
+        android:textColor="@android:color/white"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginBottom="84dp"
@@ -45,6 +46,7 @@
     <Button
         android:id="@+id/ButtonLogin"
         android:background="@drawable/gradient"
+        android:textColor="@android:color/white"
         android:layout_width="263dp"
         android:layout_height="45dp"
         android:layout_marginBottom="156dp"

@@ -132,18 +132,18 @@ public class DetailsFrete extends AppCompatActivity {
 
                         }
                         else if ((!(TextUtils.isEmpty(old1))) && (TextUtils.isEmpty(old2)) ) {
-                            reff.child("users").child(uid).child("antiga2").setValue(entrega);
+                            reff.child("users").child(uid).child("antiga2").setValue(antiga);
                         }
                         else if ((!(old1).equals("")) && (!(old2).equals("")) && (old3).equals("") ) {
-                            reff.child("users").child(uid).child("antiga3").setValue(entrega);
+                            reff.child("users").child(uid).child("antiga3").setValue(antiga);
                         }
 
                         else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (old4).equals("") ) {
-                            reff.child("users").child(uid).child("antiga4").setValue(entrega);
+                            reff.child("users").child(uid).child("antiga4").setValue(antiga);
                         }else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (!(old4).equals("")) && (old5).equals("") ) {
-                            reff.child("users").child(uid).child("antiga5").setValue(entrega);
+                            reff.child("users").child(uid).child("antiga5").setValue(antiga);
                         }else if ((!(old1).equals("")) && (!(old2).equals("")) && (!(old3).equals("")) && (!(old4).equals(""))&& (!(old5).equals("")) && (old6).equals("")) {
-                            reff.child("users").child(uid).child("antiga6").setValue(entrega);
+                            reff.child("users").child(uid).child("antiga6").setValue(antiga);
                         }
                         Toast.makeText(DetailsFrete.this,"Parabéns, você completou mais uma entrega!",Toast.LENGTH_LONG).show();
                     }});
