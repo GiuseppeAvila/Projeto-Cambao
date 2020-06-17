@@ -43,7 +43,7 @@ public class EditProfile extends AppCompatActivity {
         voltar=findViewById(R.id.voltar);
 
 
-        
+
 
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = reff.child("users");
@@ -74,10 +74,24 @@ public class EditProfile extends AppCompatActivity {
                 concluir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    boolean tdcerto=false;
                     String telefone = tel.getText().toString();
                     String placa = plate.getText().toString();
                     String cambao1 = c1.getText().toString();
 
+
+                    if(telefone.isEmpty()){
+                        tel.setError("Por favor, informe seu telefone");
+                        tel.requestFocus();
+                    } else  if(placa.isEmpty()){
+                        plate.setError("Por favor, informe sua placa");
+                        plate.requestFocus();
+                    } else  if(cambao1.isEmpty()) {
+                        c1.setError("Por favor, informe o novo nome de seu caminhão");
+                        c1.requestFocus();
+                    }else{
+                       tdcerto=true;
+                    }
 
                     reff.child("users").child(uid).child("phone").setValue(telefone);
                     reff.child("users").child(uid).child("placa").setValue(placa);
@@ -92,9 +106,11 @@ public class EditProfile extends AppCompatActivity {
                         reff.child("users").child(uid).child("nomec3").setValue(cambao3);
                     }
 
-                    Toast.makeText(EditProfile.this, "Perfil atualizado com sucesso", Toast.LENGTH_LONG).show();
-                    openMainScreen();
+                    if (tdcerto) {
+                        openMainScreen();
+                        Toast.makeText(EditProfile.this, "Perfil atualizado com sucesso", Toast.LENGTH_LONG).show();
 
+                    }
 
                 }});}
 
