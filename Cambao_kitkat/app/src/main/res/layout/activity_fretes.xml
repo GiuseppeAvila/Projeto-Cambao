@@ -52,7 +52,7 @@
                     android:id="@+id/frete2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/buttons"
+                    app:srcCompat="@drawable/buttons_verde"
                     android:layout_below="@+id/frete1"/>
 
                 <TextView
@@ -69,13 +69,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/c2"
-                    app:srcCompat="@drawable/buttons" />
+                    app:srcCompat="@drawable/buttons_verde" />
 
                 <ImageButton
                     android:id="@+id/frete4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/frete3"
+                    android:layout_marginTop="-4dp"
                     app:srcCompat="@drawable/buttons_verde" />
 
                 <TextView
@@ -98,17 +99,19 @@
                     android:id="@+id/frete6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/buttons"
+                    app:srcCompat="@drawable/buttons_verde"
                     android:layout_below="@id/frete5"/>
             </RelativeLayout>
         </ScrollView>
 
 
-        <Button
+        <ImageButton
             android:id="@+id/completados"
-            android:layout_width="82dp"
-            android:layout_height="wrap_content"
+            android:layout_width= "50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/history"
             android:layout_marginRight="20dp"
             android:background="#4A34459E"
             android:text="Button" />
