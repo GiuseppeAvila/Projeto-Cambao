@@ -67,11 +67,11 @@
 
         <Button
             android:id="@+id/buttonEntregue"
+            android:background="@drawable/green_b"
             android:layout_width="263dp"
             android:layout_height="45dp"
             android:layout_marginLeft="75dp"
             android:layout_marginBottom="0dp"
-            android:background="#59B340"
             android:fontFamily="sans-serif-smallcaps"
             android:text="Entregue"
             android:textSize="24sp"
