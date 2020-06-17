@@ -45,7 +45,12 @@ public class MainScreen extends AppCompatActivity {
                 openMap();
             }
         });
-
+        ButtonFrete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityFretes();
+            }
+        });
         imageButtonProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

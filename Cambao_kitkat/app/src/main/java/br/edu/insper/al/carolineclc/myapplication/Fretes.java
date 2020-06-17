@@ -23,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Fretes extends AppCompatActivity {
-    private ImageButton frete1,frete2,frete3,frete4,frete5,frete6;
+    private ImageButton frete1,frete2,frete3,frete4,frete5,frete6, completados;
     private TextView caminhao1,caminhao2,caminhao3;
-    private Button entregue, completados;
+    private Button entregue;
 
 
     @Override
@@ -33,7 +33,7 @@ public class Fretes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fretes);
 
-        completados = findViewById(R.id.completados);
+
 
         frete1 = (ImageButton) findViewById(R.id.frete1);
         frete2 = (ImageButton) findViewById(R.id.frete2);
@@ -41,6 +41,7 @@ public class Fretes extends AppCompatActivity {
         frete4 = (ImageButton) findViewById(R.id.frete4);
         frete5 = (ImageButton) findViewById(R.id.frete5);
         frete6 = (ImageButton) findViewById(R.id.frete6);
+        completados = (ImageButton) findViewById(R.id.completados);
 
         caminhao1=findViewById(R.id.c1);
         caminhao2=findViewById(R.id.c2);
@@ -48,6 +49,7 @@ public class Fretes extends AppCompatActivity {
 
         BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
         bottomnav.setOnNavigationItemSelectedListener(naviselect);
+
 
 
 
@@ -59,7 +61,7 @@ public class Fretes extends AppCompatActivity {
         String uid = user.getUid();
 
         userRef.addValueEventListener(new ValueEventListener() {
-            String  caminhoes,nomeC1,nomeC2,nomeC3, num;
+            String  caminhoes,nomeC1,nomeC2,nomeC3, num, fname1,fname2,fname3,fname4,fname5,fname6;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 caminhoes = dataSnapshot.child(uid).child("caminhoes").getValue().toString();
@@ -67,13 +69,43 @@ public class Fretes extends AppCompatActivity {
                 nomeC2=dataSnapshot.child(uid).child("nomec2").getValue().toString();
                 nomeC3=dataSnapshot.child(uid).child("nomec3").getValue().toString();
                 num=dataSnapshot.child(uid).child("entregas").getValue().toString();
+                fname1 = dataSnapshot.child(uid).child("frete1").child("contato").getValue().toString();
+                fname2 = dataSnapshot.child(uid).child("frete2").child("contato").getValue().toString();
+                fname3 = dataSnapshot.child(uid).child("frete3").child("contato").getValue().toString();
+                fname4 = dataSnapshot.child(uid).child("frete4").child("contato").getValue().toString();
+                fname5 = dataSnapshot.child(uid).child("frete5").child("contato").getValue().toString();
+                fname6 = dataSnapshot.child(uid).child("frete6").child("contato").getValue().toString();
 
-                completados.setText(num);
+
+                if (fname1.equals("")){
+                    frete1.setImageResource(R.drawable.buttons);
+                }
+                if (fname2.equals("")){
+                    frete2.setImageResource(R.drawable.buttons);
+                }
+                if (fname3.equals("")){
+                    frete3.setImageResource(R.drawable.buttons);
+                }
+                if (fname4.equals("")){
+                    frete4.setImageResource(R.drawable.buttons);
+                }
+                if (fname5.equals("")){
+                    frete5.setImageResource(R.drawable.buttons);
+                }
+                if (fname6.equals("")){
+                    frete6.setImageResource(R.drawable.buttons);
+                }
+
+
+                //completados.setText(num);
 
 
                 caminhao1.setText(nomeC1);
                 caminhao2.setText(nomeC2);
                 caminhao3.setText(nomeC3);
+
+
+
 
                 if (caminhoes .equals("2")) {
                     frete5.setVisibility(View.INVISIBLE);
