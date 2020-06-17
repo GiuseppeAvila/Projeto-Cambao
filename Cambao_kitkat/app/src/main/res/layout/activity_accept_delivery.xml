@@ -128,11 +128,11 @@
 
         <Button
             android:id="@+id/buttonC2"
+            android:background="@drawable/green_b"
             android:layout_width="263dp"
             android:layout_height="45dp"
             android:layout_marginLeft="75dp"
             android:layout_marginBottom="50dp"
-            android:background="#59B340"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -142,11 +142,11 @@
 
         <Button
             android:id="@+id/buttonC3"
+            android:background="@drawable/green_b"
             android:layout_width="263dp"
             android:layout_height="45dp"
             android:layout_marginLeft="75dp"
             android:layout_marginBottom="50dp"
-            android:background="#59B340"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
