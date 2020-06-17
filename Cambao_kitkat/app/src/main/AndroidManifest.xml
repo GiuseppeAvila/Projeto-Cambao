@@ -20,7 +20,6 @@
         <activity android:name=".Fretes" />
         <activity android:name=".NovoCadastro" />
         <activity android:name=".Contato" />
-        <activity android:name=".Deliveries" />
         <activity android:name=".MainScreen" />
         <activity android:name=".Info" />
         <activity android:name=".MainActivity">

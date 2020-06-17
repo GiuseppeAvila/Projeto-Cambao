@@ -1,16 +1,19 @@
 package br.edu.insper.al.carolineclc.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Fretes extends AppCompatActivity {
-    private ImageButton contato;
-    private ImageButton caixa;
-    private ImageButton caminhao;
     private ImageButton frete1,frete2,frete3,frete4,frete5,frete6;
     private TextView caminhao1,caminhao2,caminhao3;
     private Button entregue, completados;
@@ -33,9 +33,6 @@ public class Fretes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fretes);
 
-        contato = (ImageButton) findViewById(R.id.contato_fretes);
-        caminhao = (ImageButton) findViewById(R.id.caminhao_fretes);
-        caixa = (ImageButton) findViewById(R.id.caixa_fretes);
         completados = findViewById(R.id.completados);
 
         frete1 = (ImageButton) findViewById(R.id.frete1);
@@ -49,29 +46,8 @@ public class Fretes extends AppCompatActivity {
         caminhao2=findViewById(R.id.c2);
         caminhao3=findViewById(R.id.c3);
 
-
-        caminhao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityFretes();
-            }
-        });
-
-
-        contato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityContacts();
-            }
-        });
-        caixa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityCaixas();
-            }
-        });
-
-
+        BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setOnNavigationItemSelectedListener(naviselect);
 
 
 
@@ -196,8 +172,31 @@ public class Fretes extends AppCompatActivity {
 
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener naviselect =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_home:
+                            openActivityFretes();
+                            System.out.println("Isso esta funcionando");
+                            break;
+
+                        case R.id.nav_phone:
+                            openActivityContacts();
+
+                            break;
+
+                        case R.id.nav_recomendados:
+                            openActivityCaixas();
+                            break;
+                    }
+                    return true;
+                }
+            };
+
     public void openActivityFretes() {
-        Intent intent = new Intent(this, Fretes.class);
+        Intent intent = new Intent(this, MainScreen.class);
         startActivity(intent);
     }
 
