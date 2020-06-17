@@ -79,10 +79,12 @@ public class MainScreen extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_fretes:
                             openActivityFretes();
+                            System.out.println("Isso esta funcionando");
                             break;
 
                         case R.id.nav_phone:
                             openActivityContacts();
+
                             break;
 
                         case R.id.nav_recomendados:
@@ -123,19 +125,17 @@ public class MainScreen extends AppCompatActivity {
         return false;
     }
 
-    public void openActivityDeliveries() {
-        Intent intent = new Intent(this, Fretes.class);
-        startActivity(intent);
-    }
+
 
     public void openActivityFretes() {
-        Intent intent = new Intent(this, Fretes.class);
+        Intent intent = new Intent(this,Fretes.class);
         startActivity(intent);
     }
 
     public void openActivityContacts() {
         Intent intent = new Intent(this, Contato.class);
         startActivity(intent);
+        System.out.println("Isso esta funcionando");
     }
 
     public void openActivityCaixa() {
