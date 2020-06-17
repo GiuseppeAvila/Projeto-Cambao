@@ -101,12 +101,23 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/concluir"
+            android:layout_width="263dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="75dp"
+            android:text="Concluir edição"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/voltar"
             android:layout_width="263dp"
             android:layout_height="45dp"
             android:layout_marginBottom="50dp"
             android:layout_marginLeft="75dp"
-            android:text="Concluir edição"
+            android:text="Cancelar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
